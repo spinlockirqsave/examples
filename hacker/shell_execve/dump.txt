@@ -1,0 +1,193 @@
+
+prog1:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+_init():
+00000000004003c8 <_init> 48 83 ec 08          	sub    $0x8,%rsp
+00000000004003cc <_init+0x4> e8 6b 00 00 00       	callq  000000000040043c <call_gmon_start>
+00000000004003d1 <_init+0x9> e8 fa 00 00 00       	callq  00000000004004d0 <frame_dummy>
+00000000004003d6 <_init+0xe> e8 f5 01 00 00       	callq  00000000004005d0 <__do_global_ctors_aux>
+00000000004003db <_init+0x13> 48 83 c4 08          	add    $0x8,%rsp
+00000000004003df <_init+0x17> c3                   	retq   
+
+Disassembly of section .plt:
+00000000004003e0 <__libc_start_main@plt-0x10> ff 35 22 0c 20 00    	pushq  0x200c22(%rip)        # 0000000000601008 <_GLOBAL_OFFSET_TABLE_+0x8>
+00000000004003e6 <__libc_start_main@plt-0xa> ff 25 24 0c 20 00    	jmpq   *0x200c24(%rip)        # 0000000000601010 <_GLOBAL_OFFSET_TABLE_+0x10>
+00000000004003ec <__libc_start_main@plt-0x4> 0f 1f 40 00          	nopl   0x0(%rax)
+00000000004003f0 <__libc_start_main@plt> ff 25 22 0c 20 00    	jmpq   *0x200c22(%rip)        # 0000000000601018 <_GLOBAL_OFFSET_TABLE_+0x18>
+00000000004003f6 <__libc_start_main@plt+0x6> 68 00 00 00 00       	pushq  $0x0
+00000000004003fb <__libc_start_main@plt+0xb> e9 e0 ff ff ff       	jmpq   00000000004003e0 <_init+0x18>
+0000000000400400 <execve@plt> ff 25 1a 0c 20 00    	jmpq   *0x200c1a(%rip)        # 0000000000601020 <_GLOBAL_OFFSET_TABLE_+0x20>
+0000000000400406 <execve@plt+0x6> 68 01 00 00 00       	pushq  $0x1
+000000000040040b <execve@plt+0xb> e9 d0 ff ff ff       	jmpq   00000000004003e0 <_init+0x18>
+
+Disassembly of section .text:
+_start():
+0000000000400410 <_start> 31 ed                	xor    %ebp,%ebp
+0000000000400412 <_start+0x2> 49 89 d1             	mov    %rdx,%r9
+0000000000400415 <_start+0x5> 5e                   	pop    %rsi
+0000000000400416 <_start+0x6> 48 89 e2             	mov    %rsp,%rdx
+0000000000400419 <_start+0x9> 48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+000000000040041d <_start+0xd> 50                   	push   %rax
+000000000040041e <_start+0xe> 54                   	push   %rsp
+000000000040041f <_start+0xf> 49 c7 c0 c0 05 40 00 	mov    $0x4005c0,%r8
+0000000000400426 <_start+0x16> 48 c7 c1 30 05 40 00 	mov    $0x400530,%rcx
+000000000040042d <_start+0x1d> 48 c7 c7 f4 04 40 00 	mov    $0x4004f4,%rdi
+0000000000400434 <_start+0x24> e8 b7 ff ff ff       	callq  00000000004003f0 <__libc_start_main@plt>
+0000000000400439 <_start+0x29> f4                   	hlt    
+000000000040043a <_start+0x2a> 66 90                	xchg   %ax,%ax
+call_gmon_start():
+000000000040043c <call_gmon_start> 48 83 ec 08          	sub    $0x8,%rsp
+0000000000400440 <call_gmon_start+0x4> 48 8b 05 b1 0b 20 00 	mov    0x200bb1(%rip),%rax        # 0000000000600ff8 <_DYNAMIC+0x190>
+0000000000400447 <call_gmon_start+0xb> 48 85 c0             	test   %rax,%rax
+000000000040044a <call_gmon_start+0xe> 74 02                	je     000000000040044e <call_gmon_start+0x12>
+000000000040044c <call_gmon_start+0x10> ff d0                	callq  *%rax
+000000000040044e <call_gmon_start+0x12> 48 83 c4 08          	add    $0x8,%rsp
+0000000000400452 <call_gmon_start+0x16> c3                   	retq   
+0000000000400453 <call_gmon_start+0x17> 66 2e 0f 1f 84 00 00 00 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+000000000040045d <call_gmon_start+0x21> 0f 1f 00             	nopl   (%rax)
+__do_global_dtors_aux():
+0000000000400460 <__do_global_dtors_aux> 55                   	push   %rbp
+0000000000400461 <__do_global_dtors_aux+0x1> 48 89 e5             	mov    %rsp,%rbp
+0000000000400464 <__do_global_dtors_aux+0x4> 53                   	push   %rbx
+0000000000400465 <__do_global_dtors_aux+0x5> 48 83 ec 08          	sub    $0x8,%rsp
+0000000000400469 <__do_global_dtors_aux+0x9> 80 3d c8 0b 20 00 00 	cmpb   $0x0,0x200bc8(%rip)        # 0000000000601038 <_edata>
+0000000000400470 <__do_global_dtors_aux+0x10> 75 4b                	jne    00000000004004bd <__do_global_dtors_aux+0x5d>
+0000000000400472 <__do_global_dtors_aux+0x12> bb 58 0e 60 00       	mov    $0x600e58,%ebx
+0000000000400477 <__do_global_dtors_aux+0x17> 48 8b 05 c2 0b 20 00 	mov    0x200bc2(%rip),%rax        # 0000000000601040 <dtor_idx.7469>
+000000000040047e <__do_global_dtors_aux+0x1e> 48 81 eb 50 0e 60 00 	sub    $0x600e50,%rbx
+0000000000400485 <__do_global_dtors_aux+0x25> 48 c1 fb 03          	sar    $0x3,%rbx
+0000000000400489 <__do_global_dtors_aux+0x29> 48 83 eb 01          	sub    $0x1,%rbx
+000000000040048d <__do_global_dtors_aux+0x2d> 48 39 d8             	cmp    %rbx,%rax
+0000000000400490 <__do_global_dtors_aux+0x30> 73 24                	jae    00000000004004b6 <__do_global_dtors_aux+0x56>
+0000000000400492 <__do_global_dtors_aux+0x32> 66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+0000000000400498 <__do_global_dtors_aux+0x38> 48 83 c0 01          	add    $0x1,%rax
+000000000040049c <__do_global_dtors_aux+0x3c> 48 89 05 9d 0b 20 00 	mov    %rax,0x200b9d(%rip)        # 0000000000601040 <dtor_idx.7469>
+00000000004004a3 <__do_global_dtors_aux+0x43> ff 14 c5 50 0e 60 00 	callq  *0x600e50(,%rax,8)
+00000000004004aa <__do_global_dtors_aux+0x4a> 48 8b 05 8f 0b 20 00 	mov    0x200b8f(%rip),%rax        # 0000000000601040 <dtor_idx.7469>
+00000000004004b1 <__do_global_dtors_aux+0x51> 48 39 d8             	cmp    %rbx,%rax
+00000000004004b4 <__do_global_dtors_aux+0x54> 72 e2                	jb     0000000000400498 <__do_global_dtors_aux+0x38>
+00000000004004b6 <__do_global_dtors_aux+0x56> c6 05 7b 0b 20 00 01 	movb   $0x1,0x200b7b(%rip)        # 0000000000601038 <_edata>
+00000000004004bd <__do_global_dtors_aux+0x5d> 48 83 c4 08          	add    $0x8,%rsp
+00000000004004c1 <__do_global_dtors_aux+0x61> 5b                   	pop    %rbx
+00000000004004c2 <__do_global_dtors_aux+0x62> c9                   	leaveq 
+00000000004004c3 <__do_global_dtors_aux+0x63> c3                   	retq   
+00000000004004c4 <__do_global_dtors_aux+0x64> 66 66 66 2e 0f 1f 84 00 00 00 00 00 	data32 data32 nopw %cs:0x0(%rax,%rax,1)
+frame_dummy():
+00000000004004d0 <frame_dummy> 55                   	push   %rbp
+00000000004004d1 <frame_dummy+0x1> 48 83 3d 87 09 20 00 00 	cmpq   $0x0,0x200987(%rip)        # 0000000000600e60 <__JCR_END__>
+00000000004004d9 <frame_dummy+0x9> 48 89 e5             	mov    %rsp,%rbp
+00000000004004dc <frame_dummy+0xc> 74 12                	je     00000000004004f0 <frame_dummy+0x20>
+00000000004004de <frame_dummy+0xe> b8 00 00 00 00       	mov    $0x0,%eax
+00000000004004e3 <frame_dummy+0x13> 48 85 c0             	test   %rax,%rax
+00000000004004e6 <frame_dummy+0x16> 74 08                	je     00000000004004f0 <frame_dummy+0x20>
+00000000004004e8 <frame_dummy+0x18> bf 60 0e 60 00       	mov    $0x600e60,%edi
+00000000004004ed <frame_dummy+0x1d> c9                   	leaveq 
+00000000004004ee <frame_dummy+0x1e> ff e0                	jmpq   *%rax
+00000000004004f0 <frame_dummy+0x20> c9                   	leaveq 
+00000000004004f1 <frame_dummy+0x21> c3                   	retq   
+00000000004004f2 <frame_dummy+0x22> 66 90                	xchg   %ax,%ax
+main():
+/root/NetBeansProjects/examples/hacker/shell_execve/main.c:5
+#include <unistd.h>
+/*
+ * 
+ */
+int main() {
+00000000004004f4 <main> 55                   	push   %rbp
+00000000004004f5 <main+0x1> 48 89 e5             	mov    %rsp,%rbp
+00000000004004f8 <main+0x4> 48 83 ec 10          	sub    $0x10,%rsp
+/root/NetBeansProjects/examples/hacker/shell_execve/main.c:9
+
+    char *shell[2];
+
+    shell[0] = "/bin/sh";
+00000000004004fc <main+0x8> 48 c7 45 f0 1c 06 40 00 	movq   $0x40061c,-0x10(%rbp)
+/root/NetBeansProjects/examples/hacker/shell_execve/main.c:10
+    shell[1] = NULL;
+0000000000400504 <main+0x10> 48 c7 45 f8 00 00 00 00 	movq   $0x0,-0x8(%rbp)
+/root/NetBeansProjects/examples/hacker/shell_execve/main.c:11
+    execve(shell[0], shell, NULL);
+000000000040050c <main+0x18> 48 8b 45 f0          	mov    -0x10(%rbp),%rax
+0000000000400510 <main+0x1c> 48 8d 4d f0          	lea    -0x10(%rbp),%rcx
+0000000000400514 <main+0x20> ba 00 00 00 00       	mov    $0x0,%edx
+0000000000400519 <main+0x25> 48 89 ce             	mov    %rcx,%rsi
+000000000040051c <main+0x28> 48 89 c7             	mov    %rax,%rdi
+000000000040051f <main+0x2b> e8 dc fe ff ff       	callq  0000000000400400 <execve@plt>
+/root/NetBeansProjects/examples/hacker/shell_execve/main.c:13
+
+    return 0;
+0000000000400524 <main+0x30> b8 00 00 00 00       	mov    $0x0,%eax
+/root/NetBeansProjects/examples/hacker/shell_execve/main.c:14
+}
+0000000000400529 <main+0x35> c9                   	leaveq 
+000000000040052a <main+0x36> c3                   	retq   
+000000000040052b <main+0x37> 0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+__libc_csu_init():
+0000000000400530 <__libc_csu_init> 48 89 6c 24 d8       	mov    %rbp,-0x28(%rsp)
+0000000000400535 <__libc_csu_init+0x5> 4c 89 64 24 e0       	mov    %r12,-0x20(%rsp)
+000000000040053a <__libc_csu_init+0xa> 48 8d 2d fb 08 20 00 	lea    0x2008fb(%rip),%rbp        # 0000000000600e3c <__init_array_end>
+0000000000400541 <__libc_csu_init+0x11> 4c 8d 25 f4 08 20 00 	lea    0x2008f4(%rip),%r12        # 0000000000600e3c <__init_array_end>
+0000000000400548 <__libc_csu_init+0x18> 4c 89 6c 24 e8       	mov    %r13,-0x18(%rsp)
+000000000040054d <__libc_csu_init+0x1d> 4c 89 74 24 f0       	mov    %r14,-0x10(%rsp)
+0000000000400552 <__libc_csu_init+0x22> 4c 89 7c 24 f8       	mov    %r15,-0x8(%rsp)
+0000000000400557 <__libc_csu_init+0x27> 48 89 5c 24 d0       	mov    %rbx,-0x30(%rsp)
+000000000040055c <__libc_csu_init+0x2c> 48 83 ec 38          	sub    $0x38,%rsp
+0000000000400560 <__libc_csu_init+0x30> 4c 29 e5             	sub    %r12,%rbp
+0000000000400563 <__libc_csu_init+0x33> 41 89 fd             	mov    %edi,%r13d
+0000000000400566 <__libc_csu_init+0x36> 49 89 f6             	mov    %rsi,%r14
+0000000000400569 <__libc_csu_init+0x39> 48 c1 fd 03          	sar    $0x3,%rbp
+000000000040056d <__libc_csu_init+0x3d> 49 89 d7             	mov    %rdx,%r15
+0000000000400570 <__libc_csu_init+0x40> e8 53 fe ff ff       	callq  00000000004003c8 <_init>
+0000000000400575 <__libc_csu_init+0x45> 48 85 ed             	test   %rbp,%rbp
+0000000000400578 <__libc_csu_init+0x48> 74 1c                	je     0000000000400596 <__libc_csu_init+0x66>
+000000000040057a <__libc_csu_init+0x4a> 31 db                	xor    %ebx,%ebx
+000000000040057c <__libc_csu_init+0x4c> 0f 1f 40 00          	nopl   0x0(%rax)
+0000000000400580 <__libc_csu_init+0x50> 4c 89 fa             	mov    %r15,%rdx
+0000000000400583 <__libc_csu_init+0x53> 4c 89 f6             	mov    %r14,%rsi
+0000000000400586 <__libc_csu_init+0x56> 44 89 ef             	mov    %r13d,%edi
+0000000000400589 <__libc_csu_init+0x59> 41 ff 14 dc          	callq  *(%r12,%rbx,8)
+000000000040058d <__libc_csu_init+0x5d> 48 83 c3 01          	add    $0x1,%rbx
+0000000000400591 <__libc_csu_init+0x61> 48 39 eb             	cmp    %rbp,%rbx
+0000000000400594 <__libc_csu_init+0x64> 75 ea                	jne    0000000000400580 <__libc_csu_init+0x50>
+0000000000400596 <__libc_csu_init+0x66> 48 8b 5c 24 08       	mov    0x8(%rsp),%rbx
+000000000040059b <__libc_csu_init+0x6b> 48 8b 6c 24 10       	mov    0x10(%rsp),%rbp
+00000000004005a0 <__libc_csu_init+0x70> 4c 8b 64 24 18       	mov    0x18(%rsp),%r12
+00000000004005a5 <__libc_csu_init+0x75> 4c 8b 6c 24 20       	mov    0x20(%rsp),%r13
+00000000004005aa <__libc_csu_init+0x7a> 4c 8b 74 24 28       	mov    0x28(%rsp),%r14
+00000000004005af <__libc_csu_init+0x7f> 4c 8b 7c 24 30       	mov    0x30(%rsp),%r15
+00000000004005b4 <__libc_csu_init+0x84> 48 83 c4 38          	add    $0x38,%rsp
+00000000004005b8 <__libc_csu_init+0x88> c3                   	retq   
+00000000004005b9 <__libc_csu_init+0x89> 0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+__libc_csu_fini():
+00000000004005c0 <__libc_csu_fini> f3 c3                	repz retq 
+00000000004005c2 <__libc_csu_fini+0x2> 66 2e 0f 1f 84 00 00 00 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+00000000004005cc <__libc_csu_fini+0xc> 0f 1f 40 00          	nopl   0x0(%rax)
+__do_global_ctors_aux():
+00000000004005d0 <__do_global_ctors_aux> 55                   	push   %rbp
+00000000004005d1 <__do_global_ctors_aux+0x1> 48 89 e5             	mov    %rsp,%rbp
+00000000004005d4 <__do_global_ctors_aux+0x4> 53                   	push   %rbx
+00000000004005d5 <__do_global_ctors_aux+0x5> 48 83 ec 08          	sub    $0x8,%rsp
+00000000004005d9 <__do_global_ctors_aux+0x9> 48 8b 05 60 08 20 00 	mov    0x200860(%rip),%rax        # 0000000000600e40 <__CTOR_LIST__>
+00000000004005e0 <__do_global_ctors_aux+0x10> 48 83 f8 ff          	cmp    $0xffffffffffffffff,%rax
+00000000004005e4 <__do_global_ctors_aux+0x14> 74 19                	je     00000000004005ff <__do_global_ctors_aux+0x2f>
+00000000004005e6 <__do_global_ctors_aux+0x16> bb 40 0e 60 00       	mov    $0x600e40,%ebx
+00000000004005eb <__do_global_ctors_aux+0x1b> 0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+00000000004005f0 <__do_global_ctors_aux+0x20> 48 83 eb 08          	sub    $0x8,%rbx
+00000000004005f4 <__do_global_ctors_aux+0x24> ff d0                	callq  *%rax
+00000000004005f6 <__do_global_ctors_aux+0x26> 48 8b 03             	mov    (%rbx),%rax
+00000000004005f9 <__do_global_ctors_aux+0x29> 48 83 f8 ff          	cmp    $0xffffffffffffffff,%rax
+00000000004005fd <__do_global_ctors_aux+0x2d> 75 f1                	jne    00000000004005f0 <__do_global_ctors_aux+0x20>
+00000000004005ff <__do_global_ctors_aux+0x2f> 48 83 c4 08          	add    $0x8,%rsp
+0000000000400603 <__do_global_ctors_aux+0x33> 5b                   	pop    %rbx
+0000000000400604 <__do_global_ctors_aux+0x34> c9                   	leaveq 
+0000000000400605 <__do_global_ctors_aux+0x35> c3                   	retq   
+0000000000400606 <__do_global_ctors_aux+0x36> 66 90                	xchg   %ax,%ax
+
+Disassembly of section .fini:
+_fini():
+0000000000400608 <_fini> 48 83 ec 08          	sub    $0x8,%rsp
+000000000040060c <_fini+0x4> e8 4f fe ff ff       	callq  0000000000400460 <__do_global_dtors_aux>
+0000000000400611 <_fini+0x9> 48 83 c4 08          	add    $0x8,%rsp
+0000000000400615 <_fini+0xd> c3                   	retq   
