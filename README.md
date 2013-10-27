@@ -1,4 +1,4 @@
 examples
 ========
 
-simple C++ projects, multithreading and sockets
+simple C++ projects, multithreading, qt and sockets
