@@ -33,8 +33,7 @@ int     count = 0;
 pthread_mutex_t count_mutex;
 pthread_cond_t count_threshold_cv;
 
-void *inc_count(void *t) 
-{
+void* inc_count(void *t) {
   int i;
   long my_id = (long)t;
 
@@ -62,8 +61,7 @@ void *inc_count(void *t)
   pthread_exit(NULL);
 }
 
-void *watch_count(void *t) 
-{
+void* watch_count(void *t) {
   long my_id = (long)t;
 
   printf("Starting watch_count(): thread %ld\n", my_id);
@@ -89,8 +87,7 @@ void *watch_count(void *t)
   pthread_exit(NULL);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
   int i, rc; 
   long t1=1, t2=2, t3=3;
   pthread_t threads[3];
