@@ -1,15 +1,14 @@
 /* 
  * File:   main.cpp
- * Author: root
+ * Author: piter cf16 eu
  *
  * Created on April 29, 2013, 5:24 PM
  */
 
 #include <cstdlib>
 #include <stdio.h>
-//using namespace std;
 
-class Window{
+class Window {
 protected:
     virtual void draw(){
         printf("Base_draw\n");
@@ -17,7 +16,7 @@ protected:
 public:
 };
 
-class WindowA : public virtual Window{
+class WindowA : public virtual Window {
 protected:
     void own_draw(){
         printf("WindowA_own_draw\n");
@@ -30,7 +29,7 @@ protected:
 public:
 };
 
-class WindowB : public virtual Window{
+class WindowB : public virtual Window {
 protected:
     void own_draw(){
         printf("WindowB_own_draw\n");
@@ -43,7 +42,7 @@ protected:
 public:
 };
 
-class WindowDer : public WindowA, public WindowB{
+class WindowDer : public WindowA, public WindowB {
     void own_draw(){
         printf("WindowDer_own_draw\n");
     }
