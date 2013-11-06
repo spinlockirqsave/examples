@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=threads_mutex
+PROJECTNAME=threads_do_job_sumarray
 
 # Active Configuration
 DEFAULTCONF=Debug
