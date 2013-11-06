@@ -51,7 +51,7 @@ void* inc_count(void* threadarg) {
     int i;
     struct thread_data* data;
     data = (thread_data*) threadarg;
-
+sleep(1);
     for (i = 0; i < TCOUNT; i++) {
         pthread_mutex_lock(&count_mutex);
         if( data->done_) {
@@ -84,7 +84,7 @@ void* inc_count(void* threadarg) {
         pthread_mutex_unlock(&count_mutex);
 
         /* Do some work so threads can alternate on mutex lock */
-        sleep(1);
+        //sleep(1);
     }
     pthread_exit(NULL);
 }

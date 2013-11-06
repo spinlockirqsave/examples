@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: Piotr Gregor  postmaster@cf16.eu
+ * Author: Piotr Gregor  postmaster cf16.eu
  *
  * Created on June 16, 2013, 4:43 PM
  */
@@ -16,7 +16,7 @@
 *   count. The program continues until the incrementing threads reach
 *   TCOUNT. The main program prints the final value of count.
 * SOURCE: Adapted from example code in "Pthreads Programming", B. Nichols
-*   et al. O'Reilly and Associates. 
+*   et al. O'Reilly and Associates.
 * LAST REVISED: 10/14/10  Blaise Barney
 ******************************************************************************/
 #include <pthread.h>
