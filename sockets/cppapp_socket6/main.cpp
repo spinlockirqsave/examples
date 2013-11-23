@@ -20,6 +20,8 @@
  */
 #include <iostream>
 #include <string>
+#include <vector>
+using namespace std;
 
 void passAsVoid(const void* v) {
     std::cout << (const char*)v << std::endl;
@@ -29,18 +31,25 @@ int main(int argc, char** argv) {
 
     // Later in the code
 
-sockaddr_in serverAddress;
-memset(&serverAddress, '0', sizeof(serverAddress));
-serverAddress.sin_family = INADDR_ANY;
-serverAddress.sin_port = htons(192.168);
-serverAddress.sin_addr.s_addr = htonl(INADDR_ANY);
+//sockaddr_in serverAddress;
+//memset(&serverAddress, '0', sizeof(serverAddress));
+//serverAddress.sin_family = INADDR_ANY;
+//serverAddress.sin_port = htons(192.168);
+//serverAddress.sin_addr.s_addr = htonl(INADDR_ANY);
+//
+//const char* x = "x";
+//std::cout << x << std::endl;
+//
+//passAsVoid(x);
+//
+//std::string s("piotrus");
+    
+    vector<vector<string> > blocks (3);
+    blocks.push_back(vector <string>());
+    blocks.push_back(vector <string>());
+    
+    blocks[0].push_back(string("s"));
 
-const char* x = "x";
-std::cout << x << std::endl;
-
-passAsVoid(x);
-
-std::string s("piotrus");
 
     return 0;
 }
