@@ -30,7 +30,7 @@ void *BusyWork(void *t)
    printf("Thread %ld starting...\n",tid);
    for (i=0; i<1000000; i++)
    {
-      result = result + sin(i) * tan(i);
+      result = result + sin(i)*sin(i) + cos(i)*cos(i);
    }
    printf("Thread %ld done. Result = %e\n",tid, result);
    pthread_exit((void*)t);
