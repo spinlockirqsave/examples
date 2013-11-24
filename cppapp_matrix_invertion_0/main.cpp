@@ -1,10 +1,30 @@
 /* 
  * File:   main.cpp
  * Author: http://hullooo.blogspot.com/2011/02/matrix-inversion-by-gauss-jordan.html
+ * Modifications: piter cf16 eu
  *
  * Created on November 24, 2013, 2:21 AM
  */
 
+/* 
+ * algorithm should be stable:
+ * partial pivoting is used to reduce numerical instability.
+ *
+ * Gauss - Jordan elimination algorithm complexity is O(n3)
+ *  
+ * This arithmetic complexity is a good measure of the time needed 
+ * for the whole computation when the time for each arithmetic 
+ * operation is approximatively constant. This is the case when
+ * the coefficients are represented by floating point numbers
+ * or when they belong to a finite field. If the coefficients
+ * are integers or rational numbers exactly represented,
+ * the intermediate entries can grow exponentially large,
+ * so the bit complexity is exponential. However, there is
+ * a variant of Gaussian elimination, called Bareiss algorithm
+ * that avoids this exponential growth of the intermediate entries,
+ * and, with the same arithmetic complexity of O(n3),
+ * has a bit complexity of O(n5).
+ */
 #include<stdio.h>
 #include<math.h>
 
