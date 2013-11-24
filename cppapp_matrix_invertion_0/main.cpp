@@ -77,7 +77,7 @@ if(augmentedmatrix[i][j]>augmentedmatrix[temp][j])
             {
             r=augmentedmatrix[i][j];
             for(k=0; k<2*dimension; k++)
-              augmentedmatrix[i][k]-=(augmentedmatrix[j][k]/augmentedmatrix[j][j])*r ;
+              augmentedmatrix[i][k]-= augmentedmatrix[j][k] * r/augmentedmatrix[j][j];
             }
             else
             {
