@@ -113,6 +113,7 @@ int main() {
             printf("  %.5f", augmentedmatrix[i][j]);
         printf("\n");
     }
-
+    
+    return 0;
 }
 
