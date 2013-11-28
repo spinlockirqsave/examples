@@ -45,7 +45,7 @@ int main() {
     /* short, network byte order */
     my_addr.sin_port = htons(MYPORT);
     /* auto-fill with my IP */
-    my_addr.sin_addr.s_addr = INADDR_ANY;
+    my_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
     /* zero the rest of the struct */
     memset(&(my_addr.sin_zero), 0, 8);
