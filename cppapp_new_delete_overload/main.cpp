@@ -40,7 +40,7 @@ public:
 };
 
 class C : public A {
-    
+public:
 };
 
 int main(void)
