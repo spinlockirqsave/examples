@@ -16,9 +16,10 @@ class A
 {
 public:
     A(){printf("A\n");}
-    ~A(){}
+    virtual ~A(){printf("~A\n");} //better make it virtual
+    
     static void* operator new(size_t t){
-        printf("A new\n");
+        printf("A new, with size %ld\n", t);
         ::operator new(t);
     }
     static void operator delete(void* t){
@@ -33,7 +34,8 @@ public:
 
     class B{
     public:
-        B(){}
+        B(){printf("B\n");}
+        ~B(){printf("~B\n");}
     };
     
     B* b;
@@ -41,6 +43,9 @@ public:
 
 class C : public A {
 public:
+    C(){printf("C\n");}
+    ~C(){printf("~C\n");}
+    int t[100];
 };
 
 int main(void)
