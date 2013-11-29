@@ -1,0 +1,24 @@
+A new, with size 16
+A
+
+------
+B
+
+------
+~A
+A delete
+A new, with size 416
+A
+C
+A new, with size 416
+A
+C
+~C
+~A
+A delete
+~C
+~A
+A delete
+
+RUN SUCCESSFUL (total time: 65ms)
+
