@@ -37,6 +37,8 @@ int main(int argc, char** argv) {
     cout<<"aprim: "<<sizeof(aprim)<<endl;          // amd x64: 4
     cout<<"aprimprim: "<<sizeof(aprimprim)<<endl;  // amd x64: 8
     cout<<"aprimx3: "<<sizeof(aprimx3)<<endl;      // amd x64: 16, not 12 because of 8-alignment (8 because the pointer is 8 bytes)
+    cout<<"sizeof(int): "<<sizeof(int)<<endl;  
+    cout<<"sizeof(int*): "<<sizeof(int*)<<endl;  
     return 0;
 }
 
