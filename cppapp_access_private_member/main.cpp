@@ -28,6 +28,18 @@ struct A_f {
 
 template struct Rob<A_f, &A::a>;
 
+class B
+{
+public:
+    B(){ val = 0; p = new int;  }
+    //void fun_1()const{ val = 1; }  not allowed
+    void fun_2()const{ *p = 1; }
+    void display()const{ std::cout<< val <<' '<< *p << std::endl; }
+private:
+    int val;
+    const int * p;
+};
+
 int main() {
   A a(42);
   std::cout << "proof: " << a.*get(A_f()) << std::endl;
