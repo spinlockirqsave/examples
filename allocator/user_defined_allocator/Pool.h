@@ -11,7 +11,7 @@
 class Pool {
     struct Link { Link* next; };
     struct Chunk {
-        enum { size = 8 * 0x400 - 16 };
+        enum { size = 9 * 0x400 - 16 };
         Chunk* next;
         char mem[size];
     };
@@ -50,11 +50,14 @@ inline void* Pool::alloc( unsigned int  n) {
     Link* p = head;             // return current first element
     Link* tmp = head;
     while(n) {
-        if ( tmp == 0) grow();
+        if ( tmp == 0) {
+            grow();
+            tmp = head;
+        }
         tmp = tmp->next;            // move the head
         --n;
     }
-    head = tmp->next;
+    head = tmp;
     return p;
 }
 
