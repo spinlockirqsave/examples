@@ -94,7 +94,8 @@ int main(int argc, char ** argv) {
   Param_t param3;
   param3.prio = 4;
   t.addTask(*c,&Core::print, param3,param3.prio);
-  t.executeTask(); 
+  t.executeTask();
+  delete c;
 
   return 0;
  }
