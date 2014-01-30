@@ -5,9 +5,9 @@
  * Created on January 30, 2014, 1:05 PM
  */
 
-#include<iostream>
-#include<queue>
-#include<vector>
+#include <iostream>
+#include <queue>
+#include <vector>
 #include <algorithm> 
 
 template<typename T, typename Param>
