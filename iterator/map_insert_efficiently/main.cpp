@@ -20,7 +20,7 @@ void insert_efficiently_with_hint(int k, int v) {
         // update lb->second if you care to
     } else {
         // the key does not exist in the map
-        // add it to the map
+        // so dd it to the map
         myMap.insert(lb, MapType::value_type(k, v)); // Use lb as a hint to insert,
         // so it can avoid another lookup
     }
