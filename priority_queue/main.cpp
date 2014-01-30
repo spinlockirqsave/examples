@@ -25,13 +25,12 @@ class Task
          :object(&obj_), func(f_), param(p_),priority(pp) { }
     virtual ~Task() {}
     virtual void operator()() const { (object->*func)(param); }
-    // WHY I NEED COPY CONSTRUCTOR AND COPY ASSIGNMENT ???
-    // Copy Constructor -- Not sure... I need to allocate new memory ??
+
     Task(const Task& obj)
      :object(obj.object), func(obj.func), param(obj.param),priority(obj.priority)
       {  
       }
-    // Copy Assignment Operator
+
     Task& operator=(const Task obj){
         object= obj.object; func = obj.func; param = obj.param;
         priority = obj.priority;            
