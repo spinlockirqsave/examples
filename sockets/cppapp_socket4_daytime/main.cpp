@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: Piotr Gregor  postmaster@cf16.eu
+ * Author: piter  cf16.eu
  *
  * Created on July 24, 2013, 1:21 AM
  */
@@ -171,8 +171,8 @@ int main(int argc, char** argv) {
             fclose(fp);
         }
         
-        mes="\r\nSorry, this is not implemented yet.\r\nClosing connection.\r\n";
-        write(ssock,mes,strlen(mes));
+        char* mes2="\r\nSorry, this is not implemented yet.\r\nClosing connection.\r\n";
+        write(ssock,mes2,strlen(mes2));
         //char debug[5]="abc\n";
         //write(ssock,debug,strlen(debug));
         //write(ssock,debug,strlen(debug));
