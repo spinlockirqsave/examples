@@ -15,11 +15,16 @@ int main(int argc, char** argv) {
 
     char word[100][MAX];
     int i = 0;
+    
+    /**
+     * cin.getline behaves like get except that
+     * it removes terminator from the istream 
+     */
     while ( std::cin.getline( word[i], MAX, '\n') && i < 100)
     {
         /* con.getline always appends '0' as last character
          * if number of chars (not taking into account the
-         * terminator)  written to cin is:
+         * terminator)  written to istream is:
          * >= MAX : fill appropriate word[10][i]
          * (with '0' added at the end) and return false
          * < MAX  : fill appropriate word[10][i]
