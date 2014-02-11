@@ -1,7 +1,8 @@
 /* 
  * File:   main.cpp
  * Author: piter cf16 eu
- *
+ * by Vikram Bhat:
+ * http://stackoverflow.com/questions/21677292/remainder-when-dividing-large-number/21679387#21679387
  * Created on February 11, 2014, 12:07 PM
  */
 
