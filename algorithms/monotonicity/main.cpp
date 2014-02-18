@@ -23,7 +23,6 @@ int solution(const vector<int> &A) {
     int monotonicity = p;
     int mode, curr_mode;
     int streak = 0;
-    bool mode_changed = false;
     
     if ( A[0] < A[1]) curr_mode = 1, mode = 1;
     if ( A[0] > A[1]) curr_mode = -1, mode = -1;
@@ -38,7 +37,6 @@ int solution(const vector<int> &A) {
             ++constant, curr_mode = 0;
         ++q; ++monotonicity;
         if ( curr_mode != mode) {
-            mode_changed = true;
             if ( mode == 1) 
                 increasing += (streak==1? 1 : (streak-1)*(streak)/2);
             if ( mode == -1) 
