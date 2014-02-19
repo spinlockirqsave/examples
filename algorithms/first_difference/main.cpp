@@ -16,16 +16,16 @@
  * and not present in second
  */
 template <class T>
-T first_difference (T* first1, T* last1,
-                                 T* first2, T* last2)
+T first_difference (T* first1, T* last1, T* first2, T* last2)
 {
-  while (first1!=last1 && first2!=last2)
+  while (first1 != last1 && first2 != last2)
   {
-    if (*first1<*first2) { return *first1; }
-    else if (*first2<*first1) ++first2;
+    if ( *first1 < *first2) { return *first1; }
+    else if ( *first2 < *first1) ++first2;
     else { ++first1; ++first2; }
   }
-  if ( first1!=last1 && first2==last2) return *first1;
+
+  if ( first1 != last1 && first2 == last2) return *first1;
   return 0;
 }
 /*
