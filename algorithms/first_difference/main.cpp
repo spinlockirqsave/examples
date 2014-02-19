@@ -9,6 +9,7 @@
 #include <vector>
 #include <set>
 #include <algorithm>
+#include <cassert>
 
 /*
  * first difference of elements: element present in first container
@@ -50,6 +51,7 @@ int main(int argc, char** argv) {
     std::cout << '\n';
     
     int i = first_difference( first, first + 5, second, second + 6);
+    assert( i == 500);
 
     return 0;
 }
