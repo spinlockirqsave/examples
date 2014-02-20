@@ -10,6 +10,7 @@
 #include <iostream>
 #include <iterator>
 #include <vector>
+#include <cassert>
 
 int brute_force(const int K, const std::vector<int>& v) {
     int res = 0;
@@ -54,7 +55,21 @@ int solution(int K, const std::vector<int> &A) {
 }
 
 int main(int argc, char** argv) {
+    std::vector<int> v(9);
+    v[0] = 1;
+    v[1] = 8;
+    v[2] = -3;
+    v[3] = 0;
+    v[4] = 1;
+    v[5] = 3;
+    v[6] = -2;
+    v[7] = 4;
+    v[8] = 5;
 
+    std::sort(v.begin(), v.end());
+
+    assert( search(6, v) == 7);
+    assert( brute_force(6, v) == 7);
     return 0;
 }
 
