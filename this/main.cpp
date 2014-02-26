@@ -9,6 +9,8 @@
 
 using namespace std;
 
+
+
 struct A {
     int i_;
     //A( int i) : i_(i) {}
