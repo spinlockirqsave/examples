@@ -3,6 +3,7 @@
  * Author: piter cf16 eu
  *
  * Created on March 1, 2014, 4:41 PM
+ * http://stackoverflow.com/questions/22116158/whats-wrong-with-this-stream-buffer/22116751#22116751
  */
 
 #include <iostream>
@@ -32,6 +33,7 @@ public:
             if (flush())
             {
                 buffer.clear();
+                pbump(-buffer.size()); // for it avoids multiple calls to overflow()
                 setp(buffer.data(), buffer.data() + buffer.size());
                 return c;
             } else
