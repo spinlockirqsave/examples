@@ -4,6 +4,7 @@
  *
  * Created on March 2, 2014, 8:47 PM
  * http://stackoverflow.com/questions/22132390/zellers-congruence-coding-outputing-wrong-day
+ * http://en.wikipedia.org/wiki/Zeller's_congruence
  */
 
 #include <iostream>
@@ -13,7 +14,7 @@
 using namespace std;
 
 int dayNumber(int m, int d, int y) {
-    if (m == 1 || m == 2) {
+    if ( m == 1 || m == 2) {
         m = m + 12;
         y = y - 1;
     }
