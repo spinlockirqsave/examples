@@ -10,10 +10,24 @@
 #include <algorithm>
 #include <iostream>
 #include <iterator>
+
+#include <bitset>
 /*
  * 
  */
+
+class A{
+public:
+    A(){ 
+        int* t = new int[100];
+        std::cout<<"heap used\n";
+        delete t;
+    }
+};
 int main(int argc, char** argv) {
+    
+    A a1;
+    //A* a2 = new A;
 
     std::string beg("data=\"");
     std::string en("\"");
@@ -31,6 +45,10 @@ int main(int argc, char** argv) {
         std::cout << "Word:" << word.c_str() << std::endl;
         itBeg = itEnd;
     }
+    
+    int i;
+    std::cin>>i;
+    std::cout<<std::bitset<8*sizeof(int)>(i);
     return 0;
 }
 
