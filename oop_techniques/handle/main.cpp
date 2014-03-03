@@ -18,7 +18,7 @@ class Handle {
         Handle( const Handle& r) : rep_( r.rep_), pcount_( r.pcount_) {
             (*pcount_)++;
         }
-        Handle& operator+( const Handle* r) {
+        Handle& operator=( const Handle* r) {
             if ( rep_ == r->rep_) return *this;
             if ( --(*pcount_) == 0) {
                 delete rep_;
