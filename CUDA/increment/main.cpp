@@ -20,8 +20,8 @@ using namespace std;
  */
 void print(float* tab, int N){
 
-    for(unsigned int i=0;i<N;i++){
-        printf("\ni:%d, tab=%f",i,*(tab+i));
+    for( unsigned int i=0; i<N; i++){
+        printf( "\ni:%d, tab=%f", i, *( tab + i));
     }
 }
 
