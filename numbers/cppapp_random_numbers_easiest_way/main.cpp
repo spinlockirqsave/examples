@@ -13,7 +13,7 @@
  * 
  */
 int main(int argc, char** argv) {
-    boost::mt19937 rand_generator(std::time(NULL));
+    boost::mt19937 rand_generator( std::time(NULL));
     boost::random::uniform_int_distribution<> int_distribution(0, 100);
 
     //Need to pass generator
