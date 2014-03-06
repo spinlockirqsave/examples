@@ -20,21 +20,15 @@
  * @param x solution
  * http://ktuce.ktu.edu.tr/~pehlivan/numerical_analysis/chap02/BackSubstitution.pdf
  */
-void solve(int n, float a[4][4], float b[], float x[]){
-  int i,j;
+void solve(int n, float a[4][4], float b[], float x[]) {
   float s;
 
-  for(i = 0; i < n; i++) {
+  for( int i = 0; i < n; i++) {
         s = 0;
-        for( j = 0; j < i; j++) {
-            float f1 = a[ i][ j];
-            float f2 = x[j];
+        for( int j = 0; j < i; j++) {
             s = s + a[ i][ j] * x[ j];
         }
-        float f3 = a[i][i];
         x[ i] = ( b[ i] - s) / a[ i][ i];
-        float f4 = x[i];
-        int ip = 6;
    }
 }
 
