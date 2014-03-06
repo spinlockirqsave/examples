@@ -3,6 +3,7 @@
  * Author: piter cf16 eu
  *
  * Created on March 7, 2014, 12:01 AM
+ * 
  */
 
 #include <stdio.h>
@@ -10,6 +11,15 @@
 #include <algorithm>
 #include <iterator>
 
+/**
+ * solve linear equation system by forward
+ * substitution on lower triangular matrix
+ * @param n matrix rank (dimension of solution space)
+ * @param a lower triangular matrix
+ * @param b right side
+ * @param x solution
+ * http://ktuce.ktu.edu.tr/~pehlivan/numerical_analysis/chap02/BackSubstitution.pdf
+ */
 void solve(int n, float a[4][4], float b[], float x[]){
   int i,j;
   float s;
