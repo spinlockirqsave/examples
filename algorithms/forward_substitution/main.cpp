@@ -6,7 +6,6 @@
  * http://stackoverflow.com/questions/22237322/solve-ax-b-a-lower-triangular-matrix-in-c/22237724?noredirect=1#comment33770886_22237724
  */
 
-#include <stdio.h>
 #include <iostream>
 #include <algorithm>
 #include <iterator>
