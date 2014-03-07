@@ -6,6 +6,8 @@
  */
 
 double myPow( double a, int b) {
+    if ( b < 0) return myPow( 1 / a, -b);
+    if ( b == 0) return 1;
     double result = 1;
     double multiplier = a;
 
@@ -21,7 +23,7 @@ double myPow( double a, int b) {
  */
 int main(int argc, char** argv) {
 
-    double u = myPow( 3, 2);
+    double u = myPow( 0.25, -2);
     return 0;
 }
 
