@@ -34,6 +34,9 @@ int main(int argc, char** argv) {
     std::string me( "face");
     std::string ymey( "efftarcc");
     std::string res = longestCommonSubstr( me, ymey);
+    if ( !res.empty()) {
+        // found
+    }
     return 0;
 }
 
