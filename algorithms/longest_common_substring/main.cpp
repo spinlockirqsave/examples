@@ -26,6 +26,7 @@ std::string longestCommonSubstr( std::string& s, std::string& in) {
     }
     return std::string();
 }
+
 /*
  * 
  */
