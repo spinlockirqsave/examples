@@ -31,7 +31,7 @@ double areaOfTriangle( double edge1, double edge2, double edge3) {
  */
 bool heron_3d( double U, double V, double W,
                double u, double v, double w) {
-    double areas[] = { areaOfTriangle( U, V, W),
+    double areas[4] = { areaOfTriangle( U, V, W),
                        areaOfTriangle( U, v, w),
                        areaOfTriangle( V, u, w),
                        areaOfTriangle( W, u, v)};
