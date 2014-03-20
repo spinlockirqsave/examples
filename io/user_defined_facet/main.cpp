@@ -8,11 +8,15 @@
 #include <iostream>
 #include <locale>
 #include <algorithm>
+#include <sstream>
 
 /*
  * 
  */
-
+class A {
+    public:
+        int a[];
+};
 enum Season { spring, summer, fall, winter};
 
 class Season_io : public std::locale::facet {
@@ -60,7 +64,7 @@ std::ostream& operator<<( std::ostream& s, Season x) {
     return s << int( x);
 }
 
-std::istream& operator>>( std::istream& s, Season x) {
+std::istream& operator>>( std::istream& s, Season& x) {
     const std::locale& loc = s.getloc(); // extract the stream's locale
     
     /* does stream locale loc contain Season_io facet? */
@@ -74,6 +78,7 @@ std::istream& operator>>( std::istream& s, Season x) {
     /* read numeric representation */
     int i;
     s >> i;
+    s.ignore( 1);
     x = Season( i);
     return s;
 }
@@ -89,7 +94,7 @@ public:
 const std::string US_season_io::seasons[] = { "spring", "summer", "fall", "winter"};
 
 const std::string& US_season_io::to_str( Season x) const {
-    if( x < spring || winter < x) {
+    if( ( x < spring) || ( winter < x)) {
         static const std::string ss = "no-such-season";
         return ss;
     }
@@ -100,7 +105,13 @@ bool US_season_io::from_str( const std::string& s, Season& x) const {
     const std::string* beg = &seasons[spring];
     const std::string* end = &seasons[winter] + 1;
     const std::string* p = std::find( beg, end, s);
-    if( p == end) return false;
+    if( p == end) {
+        std::istringstream iss( s);
+        int i;
+        iss >> i;
+        x = Season( i);
+        return false;
+    }
     x = Season( p - beg);
     return true;
 }
