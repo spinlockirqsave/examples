@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <locale>
+#include <algorithm>
 
 /*
  * 
@@ -48,7 +49,7 @@ std::locale::id Season_io::id;  // definition
  * an ios_base::failure exception is thrown.
  */
 
-std::ostream& operator<<( std::ostream s, Season x) {
+std::ostream& operator<<( std::ostream& s, Season x) {
     const std::locale& loc = s.getloc(); // extract the stream's locale
     
     /* does stream locale loc contain Season_io facet? */
@@ -59,7 +60,7 @@ std::ostream& operator<<( std::ostream s, Season x) {
     return s << int( x);
 }
 
-std::istream& operator>>( std::istream s, Season x) {
+std::istream& operator>>( std::istream& s, Season x) {
     const std::locale& loc = s.getloc(); // extract the stream's locale
     
     /* does stream locale loc contain Season_io facet? */
@@ -77,17 +78,46 @@ std::istream& operator>>( std::istream s, Season x) {
     return s;
 }
 
-int main(int argc, char** argv) {
-    
-    std::locale loc0;                 // copy of the current global locale
-    std::locale loc1 = std::locale(); // copy of the current global locale
-    std::locale loc2("");            // copy of ‘‘the user’s preferred locale’’
-    std::locale loc3( "C");                     // copy of the "C" locale
-    std::locale loc4 = std::locale::classic();  // copy of the "C" locale
-    std::locale loc5( "POSIX"); // copy of the implementation-defined "POSIX" locale
-    
-    char c = std::use_facet< std::numpunct<char> > ( std::locale()).decimal_point();
-    std::cout << "std::use_facet< std::numpunct<char> > ( std::locale()).decimal_point():" << c << std::endl;
+class US_season_io : public Season_io {
+    static const std::string seasons[];
+public:
+    const std::string& to_str( Season) const;
+    bool from_str( const std::string&, Season&) const;
+    // note: no US_season_io::id
+};
 
+const std::string US_season_io::seasons[] = { "spring", "summer", "fall", "winter"};
+
+const std::string& US_season_io::to_str( Season x) const {
+    if( x < spring || winter < x) {
+        static const std::string ss = "no-such-season";
+        return ss;
+    }
+    return seasons[ x];
+}
+
+bool US_season_io::from_str( const std::string& s, Season& x) const {
+    const std::string* beg = &seasons[spring];
+    const std::string* end = &seasons[winter] + 1;
+    const std::string* p = std::find( beg, end, s);
+    if( p == end) return false;
+    x = Season( p - beg);
+    return true;
+}
+
+
+int main(int argc, char** argv) {
+
+    Season x;
+    /* use default locale (no Season_io facet) implies integer I/O*/
+    std::cin >> x;
+    std::cout << x << std::endl;
+    
+    std::locale loc( std::locale(), new US_season_io);
+    std::cout.imbue( loc); // use locale with Season_io facet
+    std::cin.imbue( loc);
+    
+    std::cin >> x;
+    std::cout << x << std::endl;
     return 0;
 }
