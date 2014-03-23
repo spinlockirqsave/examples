@@ -116,16 +116,16 @@ bool US_season_io::from_str( const std::string& s, Season& x) const {
 
 int main(int argc, char** argv) {
 
-    Season x;
+    Season y;
     /* use default locale (no Season_io facet) implies integer I/O*/
-    std::cin >> x;
-    std::cout << x << std::endl;
+    std::cin >> y;
+    std::cout << y << std::endl;
     
     std::locale loc( std::locale(), new US_season_io);
     std::cout.imbue( loc); // use locale with Season_io facet
     std::cin.imbue( loc);
     
-    std::cin >> x;
-    std::cout << x << std::endl;
+    std::cin >> y;
+    std::cout << y << std::endl;
     return 0;
 }
