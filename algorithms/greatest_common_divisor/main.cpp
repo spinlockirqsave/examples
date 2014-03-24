@@ -5,12 +5,8 @@
  */
 
 #include <iostream>
-#include <numeric>
-#include <algorithm>
-#include <vector>
-#include <iterator>
-#include <limits>
 #include <stdio.h>
+
 int gcd(int a, int b)
 {
     for (;;)
