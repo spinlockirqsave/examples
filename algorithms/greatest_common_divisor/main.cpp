@@ -10,7 +10,7 @@
 #include <vector>
 #include <iterator>
 #include <limits>
-
+#include <stdio.h>
 int gcd(int a, int b)
 {
     for (;;)
@@ -31,19 +31,15 @@ int gcd(int a, int b)
 
 int main( int argc, char** argv)
 {
-    if ( argc < 1) {
-        std::cout << "Program has to be called with 2 arguments at least\n";
+    if ( argc < 3) {
+        std::cout << "Program has to be called with 2 integers.\n";
         return -1;
     }
     
-    std::cout << "numbers:\t";
-    std::vector<int> v;
-    std::copy( std::istream_iterator<int>( std::cin), std::istream_iterator<int>(),
-                                                         std::back_inserter( v));
+    int a = *(argv[1]);
+    int b = *(argv[2]);
 
-    int result = std::accumulate( v.begin(), v.end(), v[0], gcd);
-
-    std::cout << result << '\n';
+    std::cout << gcd( a, b) << '\n';
     return 0;
 }
 
