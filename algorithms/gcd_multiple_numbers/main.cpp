@@ -6,6 +6,9 @@
 
 #include <iostream>
 #include <numeric>
+#include <algorithm>
+#include <vector>
+#include <iterator>
 
 int gcd(int a, int b)
 {
@@ -18,18 +21,22 @@ int gcd(int a, int b)
     }
 }
 
-int lcm(int a, int b)
+//int lcm(int a, int b)
+//{
+//    int temp = gcd(a, b);
+//
+//    return temp ? (a / temp * b) : 0;
+//}
+
+int main( int argc, char** argv)
 {
-    int temp = gcd(a, b);
+    std::cout << "numbers:\t";
+    std::vector<int> v;
+    std::copy( std::istream_iterator<int>( std::cin), std::istream_iterator<int>(),
+                                                         std::back_inserter( v));
 
-    return temp ? (a / temp * b) : 0;
-}
-
-int main()
-{
-    int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 };
-
-    int result = std::accumulate(arr, arr + 21, 1, lcm);
+    int result = std::accumulate( v.begin(), v.end(), v[0], gcd);
 
     std::cout << result << '\n';
+    return 0;
 }

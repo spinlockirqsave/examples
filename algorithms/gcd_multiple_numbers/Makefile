@@ -1,10 +1,10 @@
 include Make.defines
 
-PROGS =	main.out
+PROGS =	cf16_gcd
 
 all:	${PROGS}
 
-main.out:	main.o
+cf16_gcd:	main.o
 		${CC} ${CFLAGS} -o $@ main.o ${LIBS}
 
 clean:
