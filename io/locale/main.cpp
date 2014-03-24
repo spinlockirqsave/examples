@@ -38,10 +38,13 @@ int main(int argc, char** argv) {
     printf( "name of current global locale:%s\n", std::locale().name().c_str());
     printf( "name of classic C locale:%s\n", std::locale::classic().name().c_str());
     printf( "name of user's preffered current locale:%s\n", std::locale("").name().c_str());
+    printf( "name of current cin locale:%s\n", std::cin.getloc().name().c_str());
+    std::cin.imbue( std::locale("en_US.UTF-8"));
+    printf( "name of current cin locale:%s\n", std::cin.getloc().name().c_str());
     
     std::locale loc7( "en_US.UTF-8");
     
-    std::collate<char>* c = new std::collate_byname<char>("C");
+    std::collate<char>* c = new std::collate_byname<char>( "C");
 
     return 0;
 }
