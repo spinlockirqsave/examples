@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: postmaster cf16.eu
+ * Author: piter cf16.eu
  *
  * Created on October 13, 2013, 1:08 AM
  */
@@ -91,6 +91,8 @@ int main(int argc, char** argv) {
     int greatestCommonDevisor =  gcd_iterative(120, 23, x_solution, y_solution);
     greatestCommonDevisor =  gcd_iterative(12, 4, x_solution, y_solution);
     greatestCommonDevisor =  gcd_iterative(8, 3, x_solution, y_solution);
+    
+    int l = gcd_iterative1(4,6);
     
     return 0;
 }
