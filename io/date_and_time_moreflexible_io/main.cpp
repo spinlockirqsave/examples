@@ -100,33 +100,16 @@ int main(int argc, char** argv) {
 
     try {
         Date today;
-        std::cout << today << std::endl; // write using %x format: 03/26/14
+        std::cout << today << std::endl; // write using Date::fmt format
 
         Date dd;
         std::cin >> dd;  // read dates produced by %x format
-        std::cout << dd << std::endl; // write using %x format
+        std::cout << dd << std::endl; // write using Date::fmt format
 
         while ( std::cin >> dd && !std::cin.fail()) { // read dates produced by %x format
             dd.fmt_out = 'c';
-            std::cout << dd << std::endl; // write using %c format: Wed Mar 26 16:11:58 2014
+            std::cout << dd << std::endl; // write using Date::fmt format
         }
-        
-        today.fmt_out = 'a';
-        std::cout << today << std::endl; // write using %a format: abbreviated weekday name: Wed
-        today.fmt_out = 'b';
-        std::cout << today << std::endl; // write using %b format: abbreviated month name: Mar
-        today.fmt_out = 'c';
-        std::cout << today << std::endl; // write using %c format: date & time: Wed Mar 26 16:11:58 2014
-        today.fmt_out = 'd';
-        std::cout << today << std::endl; // write using %d format: day of month: 26
-        today.fmt_out = 'H';
-        std::cout << today << std::endl; // write using %j format: 24-hour clock: 16
-        today.fmt_out = 'I';
-        std::cout << today << std::endl; // write using %j format: 12-hour clock: 04
-        today.fmt_out = 'j';
-        std::cout << today << std::endl; // write using %j format: day of year: 085
-        today.fmt_out = 'p';
-        std::cout << today << std::endl; // write using %p format: a.m./p.m.: PM
     } catch ( Date::Bad_date& bd) {
         std::cout << "exit: bad date caught\n";
     }
