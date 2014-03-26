@@ -10,7 +10,7 @@
 
 class Date {
 public:
-    enum Month { jan = 1, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec };
+    enum Month { jan = 0, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec };
     class Bad_date {};
     Date( int dd, Month mm, int yy);
     Date();
@@ -33,9 +33,9 @@ private:
 Date::Date( int dd, Month mm, int yy) {
     tm x = { 0};
     if( dd < 0 || 31 < dd) throw Bad_date();  // oversimplified
-    x.tm_mday == dd;
+    x.tm_mday = dd;
     if( mm < jan || dec < mm) throw Bad_date();
-    x.tm_mon = mm -1;      // tm_mon is zero based
+    x.tm_mon = mm;         // tm_mon is zero based
     x.tm_year = yy - 1900; // tm_year is 1900 based
     d = mktime( &x);
     fmt_in = 'x';
@@ -76,12 +76,15 @@ std::istream& operator>>( std::istream& s, Date& d) {
         std::use_facet< std::time_get<char> >( s.getloc()).get_date( s, end, s, res, &x);
         if( res == 0 || res == std::ios_base::eofbit)
             //d = Date( x.tm_mday, Date::Month( x.tm_mon + 1), x.tm_year + 1900);
-            d.operator=( Date( x.tm_mday, Date::Month( x.tm_mon + 1), x.tm_year + 1900));
-        //else
-            //s.setstate( res);    
+            d.operator=( Date( x.tm_mday, Date::Month( x.tm_mon), x.tm_year + 2000));
+        else {
+            s.setstate( res);
+            //s.ignore()
+        }
     } catch( std::exception& e) {
         std::cout << e.what();
     }
+    return s;
 }
 /*
  *
@@ -93,9 +96,14 @@ int main(int argc, char** argv) {
         std::cout << today << std::endl; // write using %x format: 03/26/14
 
         Date dd;
-        std::cin >> dd; // read dates produced by %x format
+        std::cin >> dd;  // read dates produced by %x format
         std::cout << dd << std::endl; // write using %x format
 
+        while ( std::cin >> dd && !std::cin.fail()) { // read dates produced by %x format
+            dd.fmt_out = 'c';
+            std::cout << dd << std::endl; // write using %c format: Wed Mar 26 16:11:58 2014
+        }
+        
         today.fmt_out = 'a';
         std::cout << today << std::endl; // write using %a format: abbreviated weekday name: Wed
         today.fmt_out = 'b';
@@ -112,7 +120,7 @@ int main(int argc, char** argv) {
         std::cout << today << std::endl; // write using %j format: day of year: 085
         today.fmt_out = 'p';
         std::cout << today << std::endl; // write using %p format: a.m./p.m.: PM
-    } catch (Date::Bad_date& bd) {
+    } catch ( Date::Bad_date& bd) {
         std::cout << "exit: bad date caught\n";
     }
 
