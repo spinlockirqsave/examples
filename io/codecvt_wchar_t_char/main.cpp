@@ -28,7 +28,9 @@ struct codecvt_to_upper : std::codecvt<wchar_t, char, std::mbstate_t>
  
         const extern_type* p = from;
         while (p != from_end && to != to_end) {
-            *to++ = ct.toupper( *p++);
+            *to = ct.toupper( *p);
+            ++to;
+            ++p;
         }
  
         from_next = p;
@@ -42,7 +44,10 @@ int main()
 {
     std::locale ulocale( std::locale(), new codecvt_to_upper);
  
-    std::wofstream("out.txt") << L"abc";
+    std::wstring piter = L"piter";
+    std::wofstream ws("out.txt");
+    ws << piter;
+    ws.close();
     std::wifstream in("out.txt");
     in.imbue(ulocale);
  
