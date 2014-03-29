@@ -13,16 +13,16 @@
 class codecvt_to_upper : public std::codecvt<wchar_t, char, std::mbstate_t> {
 public:
 
-    explicit codecvt_to_upper(size_t r = 0) : std::codecvt<wchar_t, char, std::mbstate_t>(r) {
+    explicit codecvt_to_upper( size_t r = 0) : std::codecvt<wchar_t, char, std::mbstate_t>(r) {
         int i = 9;
     }
 protected:
-    result do_in(state_type& state, const extern_type* from, const extern_type* from_end,
+    result do_in (state_type& state, const extern_type* from, const extern_type* from_end,
             const extern_type*& from_next, intern_type* to, intern_type* to_end,
             intern_type*& to_next) const;
 
     result
-    do_out(state_type& __state, const intern_type* __from,
+    do_out( state_type& __state, const intern_type* __from,
             const intern_type* __from_end, const intern_type*& __from_next,
             extern_type* __to, extern_type* __to_end,
             extern_type*& __to_next) const {
@@ -30,7 +30,7 @@ protected:
     }
 
     result
-    do_unshift(state_type& __state, extern_type* __to,
+    do_unshift( state_type& __state, extern_type* __to,
             extern_type* __to_end, extern_type*& __to_next) const {
         return codecvt_to_upper::ok;
     }
@@ -46,7 +46,7 @@ protected:
     }
 
     int
-    do_length(state_type&, const extern_type* __from,
+    do_length( state_type&, const extern_type* __from,
             const extern_type* __end, size_t __max) const {
         return 1;
     }
@@ -57,7 +57,7 @@ protected:
     }
 };
 
-codecvt_to_upper::result codecvt_to_upper::do_in(state_type& state, const extern_type* from,
+codecvt_to_upper::result codecvt_to_upper::do_in( state_type& state, const extern_type* from,
         const extern_type* from_end, const extern_type*& from_next, intern_type* to,
         intern_type* to_end, intern_type*& to_next) const {
     codecvt_to_upper::result res = codecvt_to_upper::error;
@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
  
     wchar_t c;
  
-    while (in >> c)
+    while ( in >> c)
     {
         std::wcout << c;
     }
