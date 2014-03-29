@@ -9,13 +9,13 @@
 #include <fstream>
 #include <string>
 #include <locale>
- 
+
 struct codecvt_to_upper : std::codecvt<wchar_t, char, std::mbstate_t>
 {
-    explicit codecvt_to_upper(size_t r = 0)
+    explicit codecvt_to_upper( size_t r = 0)
         : std::codecvt<wchar_t, char, std::mbstate_t>(r) { }
  
-    result do_in(state_type&,
+    result do_in( state_type&,
               const extern_type* from,
               const extern_type* from_end,
               const extern_type*& from_next,
@@ -27,7 +27,7 @@ struct codecvt_to_upper : std::codecvt<wchar_t, char, std::mbstate_t>
         const std::ctype<char>& ct = std::use_facet<std::ctype<char> >( std::locale());
  
         const extern_type* p = from;
-        while (p != from_end && to != to_end) {
+        while ( p != from_end && to != to_end) {
             *to = ct.toupper( *p);
             ++to;
             ++p;
@@ -45,10 +45,10 @@ int main()
     std::locale ulocale( std::locale(), new codecvt_to_upper);
  
     std::wstring piter = L"piter";
-    std::wofstream ws("out.txt");
+    std::wofstream ws( "out.txt");
     ws << piter;
     ws.close();
-    std::wifstream in("out.txt");
+    std::wifstream in( "out.txt");
     in.imbue(ulocale);
  
     wchar_t c;
@@ -58,4 +58,3 @@ int main()
         std::wcout << c;
     }
 }
-
