@@ -49,11 +49,11 @@ int main()
     ws << piter;
     ws.close();
     std::wifstream in( "out.txt");
-    in.imbue(ulocale);
+    in.imbue( ulocale);
  
     wchar_t c;
  
-    while (in >> c)
+    while ( in >> c)
     {
         std::wcout << c;
     }
