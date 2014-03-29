@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
      */
     while ( std::cin.getline( word[i], MAX, '\n') && i < 100)
     {
-        /* con.getline always appends '0' as last character
+        /* cin.getline always appends '0' as last character
          * if number of chars (not taking into account the
          * terminator)  written to istream is:
          * >= MAX : fill appropriate word[10][i]
