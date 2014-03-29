@@ -17,7 +17,7 @@ public:
         int i = 9;
     }
 protected:
-    result do_in (state_type& state, const extern_type* from, const extern_type* from_end,
+    result do_in ( state_type& state, const extern_type* from, const extern_type* from_end,
             const extern_type*& from_next, intern_type* to, intern_type* to_end,
             intern_type*& to_next) const;
 
