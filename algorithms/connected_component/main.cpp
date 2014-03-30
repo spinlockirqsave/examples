@@ -3,6 +3,10 @@
  * Author: piter cf16 eu
  *
  * Created on March 30, 2014, 3:51 PM
+ * 
+ * make connected components (or just components) of an undirected graph
+ * http://en.wikipedia.org/wiki/Connected_component_%28graph_theory%29
+ * http://stackoverflow.com/questions/22744644/set-of-pairs-merge-pairs-that-share-one-element-in-common/22746005#22746005
  */
 
 #include <iostream>
