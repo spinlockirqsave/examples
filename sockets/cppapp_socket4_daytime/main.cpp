@@ -131,6 +131,8 @@ int main(int argc, char** argv) {
                 inet_ntop(AF_INET, (void*)&theirAddr.sin_addr, addressBuffer, INET_ADDRSTRLEN);
         TCPdaytimed(ssock);
         close( ssock);
+        /* DoS protection */
+        sleep( 15);
   }
     fclose(ferr);
     return 0;
