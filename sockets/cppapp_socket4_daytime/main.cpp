@@ -103,17 +103,13 @@ int passiveTCP(const char *service, int qlen){
 }
 
 void TCPdaytimed(int fd){
-    char *pts;
-    time_t now;
-    //char *ctime();
-    time(&now);
-    pts = ctime(&now);
-    write(fd, pts, strlen(pts));
-    char mes[35] = "\rUnix timestamp: ";
-    char buffer[15];
-    snprintf(buffer, sizeof(buffer), "%d\r\n", now);
-    strcat(mes,buffer);
-    write(fd, mes, strlen(mes));
+    char buffer [110];
+    time_t rawTime;
+    time( &rawTime);
+    struct tm * timeInfo;
+    timeInfo = localtime( &rawTime);
+    strftime( buffer, sizeof( buffer), "cf16 daytime service. The time on this server now is: %A, %B %d, %G %T %p-%Z\n", timeInfo);
+    write(fd, buffer, strlen( buffer));
     return;
 }
 
@@ -133,54 +129,8 @@ int main(int argc, char** argv) {
             errExit("accept failed: %s\n", strerror(errno));
         char addressBuffer[INET_ADDRSTRLEN];
                 inet_ntop(AF_INET, (void*)&theirAddr.sin_addr, addressBuffer, INET_ADDRSTRLEN);
-        //char* m = "Hello, cf16 DAYTIME service here.\nThe time on this server is now: ";
-        //const int size = strlen(m)+INET_ADDRSTRLEN+2;
-                char message[100] = "Hello, ";
-                strcat(message, addressBuffer);
-                const char* m = ". cf16 DAYTIME service here.\r\nThe time on this server is now: ";
-                strcat(message, m);
-        write(ssock,message,strlen(message));
         TCPdaytimed(ssock);
         close( ssock);
-//        char* mes = "\nCan I still assist you? [yes/no]: ";
-//        write(ssock,mes,strlen(mes));
-//#define MAXDATASIZE 200
-//        int left = MAXDATASIZE;
-//        char buf[MAXDATASIZE], *b;
-//        int bytes = 0, totalBytes = 0;
-//        b=buf;
-////        while((bytes = read(ssock,buf,MAXDATASIZE-1) > 0) && left){ // read in chunks, reads only 1 byte. TODO: why ?????
-////            totalBytes+=bytes;
-////            b+=bytes;
-////            left-=bytes;
-////        }
-//        totalBytes = read(ssock,buf,MAXDATASIZE-1); // read all at once, works
-//        if (totalBytes > 2) {
-//            if ((fp = freopen("/home/piter/log/log_cppapp_socket4_daytime.txt", "a", stdout)) == NULL) {
-//                printf("ERROR cppapp_socket4_daytime: Cannot write to file /home/piter/log/log_cppapp_socket4_daytime.txt.\n");
-//                exit(1);
-//            }
-//            char *pts;
-//            char ptsres[25];
-//            ptsres[24]='\0';
-//            time_t now;
-//            time(&now);
-//            pts = ctime(&now);
-//            strncpy(ptsres,pts,24);
-//            char buf2[totalBytes-1];
-//            buf2[totalBytes-2]='\0';
-//            strncpy(buf2,buf,totalBytes-2);
-//            printf("%s, Client with IP %s says: %s\n", ptsres, addressBuffer, buf2);
-//            fclose(fp);
-//        }
-//        
-//        char* mes2="\r\nSorry, this is not implemented yet.\r\nClosing connection.\r\n";
-//        write(ssock,mes2,strlen(mes2));
-//        //char debug[5]="abc\n";
-//        //write(ssock,debug,strlen(debug));
-//        //write(ssock,debug,strlen(debug));
-//        //write(ssock,debug,strlen(debug));
-//        close(ssock);
   }
     fclose(ferr);
     return 0;
