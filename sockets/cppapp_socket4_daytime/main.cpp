@@ -3,6 +3,8 @@
  * Author: piter  cf16.eu
  *
  * Created on July 24, 2013, 1:21 AM
+ * A daytime service implementation as in RFC 867
+ * http://tools.ietf.org/html/rfc867
  */
 
 #include <unistd.h>
@@ -121,7 +123,7 @@ int main(int argc, char** argv) {
     ferr = freopen("/home/piter/log/log_cppapp_socket4_daytime.txt", "a", stderr);
     
     struct sockaddr_in theirAddr;
-    char *service = "daytime";
+    const char *service = "daytime";
     int msock, ssock;
     int alen;
     msock = passiveTCP(service, 5);
@@ -135,49 +137,50 @@ int main(int argc, char** argv) {
         //const int size = strlen(m)+INET_ADDRSTRLEN+2;
                 char message[100] = "Hello, ";
                 strcat(message, addressBuffer);
-                char* m = ". cf16 DAYTIME service here.\r\nThe time on this server is now: ";
+                const char* m = ". cf16 DAYTIME service here.\r\nThe time on this server is now: ";
                 strcat(message, m);
         write(ssock,message,strlen(message));
         TCPdaytimed(ssock);
-        char* mes = "\nCan I still assist you? [yes/no]: ";
-        write(ssock,mes,strlen(mes));
-#define MAXDATASIZE 200
-        int left = MAXDATASIZE;
-        char buf[MAXDATASIZE], *b;
-        int bytes = 0, totalBytes = 0;
-        b=buf;
-//        while((bytes = read(ssock,buf,MAXDATASIZE-1) > 0) && left){ // read in chunks, reads only 1 byte. TODO: why ?????
-//            totalBytes+=bytes;
-//            b+=bytes;
-//            left-=bytes;
+        close( ssock);
+//        char* mes = "\nCan I still assist you? [yes/no]: ";
+//        write(ssock,mes,strlen(mes));
+//#define MAXDATASIZE 200
+//        int left = MAXDATASIZE;
+//        char buf[MAXDATASIZE], *b;
+//        int bytes = 0, totalBytes = 0;
+//        b=buf;
+////        while((bytes = read(ssock,buf,MAXDATASIZE-1) > 0) && left){ // read in chunks, reads only 1 byte. TODO: why ?????
+////            totalBytes+=bytes;
+////            b+=bytes;
+////            left-=bytes;
+////        }
+//        totalBytes = read(ssock,buf,MAXDATASIZE-1); // read all at once, works
+//        if (totalBytes > 2) {
+//            if ((fp = freopen("/home/piter/log/log_cppapp_socket4_daytime.txt", "a", stdout)) == NULL) {
+//                printf("ERROR cppapp_socket4_daytime: Cannot write to file /home/piter/log/log_cppapp_socket4_daytime.txt.\n");
+//                exit(1);
+//            }
+//            char *pts;
+//            char ptsres[25];
+//            ptsres[24]='\0';
+//            time_t now;
+//            time(&now);
+//            pts = ctime(&now);
+//            strncpy(ptsres,pts,24);
+//            char buf2[totalBytes-1];
+//            buf2[totalBytes-2]='\0';
+//            strncpy(buf2,buf,totalBytes-2);
+//            printf("%s, Client with IP %s says: %s\n", ptsres, addressBuffer, buf2);
+//            fclose(fp);
 //        }
-        totalBytes = read(ssock,buf,MAXDATASIZE-1); // read all at once, works
-        if (totalBytes > 2) {
-            if ((fp = freopen("/home/piter/log/log_cppapp_socket4_daytime.txt", "a", stdout)) == NULL) {
-                printf("ERROR cppapp_socket4_daytime: Cannot write to file /home/piter/log/log_cppapp_socket4_daytime.txt.\n");
-                exit(1);
-            }
-            char *pts;
-            char ptsres[25];
-            ptsres[24]='\0';
-            time_t now;
-            time(&now);
-            pts = ctime(&now);
-            strncpy(ptsres,pts,24);
-            char buf2[totalBytes-1];
-            buf2[totalBytes-2]='\0';
-            strncpy(buf2,buf,totalBytes-2);
-            printf("%s, Client with IP %s says: %s\n", ptsres, addressBuffer, buf2);
-            fclose(fp);
-        }
-        
-        char* mes2="\r\nSorry, this is not implemented yet.\r\nClosing connection.\r\n";
-        write(ssock,mes2,strlen(mes2));
-        //char debug[5]="abc\n";
-        //write(ssock,debug,strlen(debug));
-        //write(ssock,debug,strlen(debug));
-        //write(ssock,debug,strlen(debug));
-        close(ssock);
+//        
+//        char* mes2="\r\nSorry, this is not implemented yet.\r\nClosing connection.\r\n";
+//        write(ssock,mes2,strlen(mes2));
+//        //char debug[5]="abc\n";
+//        //write(ssock,debug,strlen(debug));
+//        //write(ssock,debug,strlen(debug));
+//        //write(ssock,debug,strlen(debug));
+//        close(ssock);
   }
     fclose(ferr);
     return 0;
