@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
     }
     f.close();
     
-    if (hashMap.size() == 1) {
+    if ( hashMap.size() == 1) {
         std::cout << "There is 1 entry in the table.\n"
                 << "Please enter the key or \"q\" to quit.\n";
     } else {
