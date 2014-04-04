@@ -63,12 +63,12 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppapp_socket4_daytime: ${OBJECTFILES
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppapp_socket4_daytime ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/main.o: main.cpp 
+${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
-${OBJECTDIR}/error_functions.o: error_functions.c 
+${OBJECTDIR}/error_functions.o: nbproject/Makefile-${CND_CONF}.mk error_functions.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/error_functions.o error_functions.c
