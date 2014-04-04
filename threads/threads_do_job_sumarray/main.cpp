@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: Piotr Gregor  postmaster@cf16.eu
+ * Author: Piotr Gregor  piter@cf16.eu
  *
  * Created on June 14, 2013, 4:50 PM
  */

@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: Piotr Gregor  postmaster@cf16.eu
+ * Author: Piotr Gregor  piter@cf16.eu
  *
  * Created on July 21, 2013, 2:11 AM
  */
@@ -13,8 +13,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define DEST_IP "192.168.0.101"
-#define DEST_PORT 23
+#define DEST_IP "127.0.0.1"
+#define DEST_PORT 3440
  
 int main(int argc, char *argv[ ])
 {

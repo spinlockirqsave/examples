@@ -1,7 +1,8 @@
 /* 
  * File:   main.cpp
  * Author: piter cf16 eu
- *
+ * by Prokopi Nikolaev
+ * http://geom3d.com/data/documents/Calculation=20of=20Euler=20angles.pdf
  * Created on February 7, 2014, 9:57 AM
  */
 
@@ -11,7 +12,7 @@
 #define PI 3.141592653589793 
 
 /**
- * 
+ * @function
  * @param X1x
  * @param X1y
  * @param X1z X1 vector coordinates
@@ -25,7 +26,7 @@
  * @param nut nutation rotation
  * @param rot intrinsic rotation
  */
-void LCS2Euler(
+void lcs2Euler(
         double X1x, double X1y, double X1z,
         double Y1x, double Y1y, double Y1z,
         double Z1x, double Z1y, double Z1z,

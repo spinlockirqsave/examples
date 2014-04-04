@@ -13,10 +13,7 @@
 /*
  * 
  */
-class A {
-    public:
-        int a[];
-};
+
 enum Season { spring, summer, fall, winter};
 
 class Season_io : public std::locale::facet {

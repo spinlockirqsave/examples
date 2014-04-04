@@ -105,6 +105,8 @@ int main(int argc, char** argv) {
     int res = largestProductInRow( matrix, 3, v);
     printf( "res:%d\n", res);
     copy( v.begin(), v.end(), ostream_iterator<int>(cout, ","));
+    int i = v.size();
+    if (v.empty());
     return 0;
 }
 

@@ -23,7 +23,7 @@ public:
     }
 
     string_type do_curr_symbol() const {
-        return "USD";
+        return "USD ";
     }
     
     string_type do_positive_sign() const {
@@ -33,11 +33,11 @@ public:
     typedef std::money_base mb;
 
     std::money_base::pattern do_pos_format() const {
-        mb::pattern pattern;
+        static mb::pattern pattern;
         pattern.field[ 0] = mb::sign;
         pattern.field[ 1] = mb::symbol;
-        pattern.field[ 2] = mb::none;
-        pattern.field[ 3] = mb::value;
+        pattern.field[ 2] = mb::value;
+        pattern.field[ 3] = mb::none;
         return pattern;
     }
 };
