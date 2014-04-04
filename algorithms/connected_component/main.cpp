@@ -14,6 +14,7 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
+#include <stdint.h>
 
 typedef std::set<std::pair<int,int> > SetOfPair;
 
