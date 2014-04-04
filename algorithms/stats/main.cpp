@@ -6,6 +6,7 @@
 #include <boost/accumulators/statistics/max.hpp>
 using namespace boost::accumulators;
 
+
 int main() {
     // Define an accumulator set for calculating the mean, max, and min
     accumulator_set<double, features<tag::min, tag::max, tag::mean> > acc;
