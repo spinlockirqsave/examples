@@ -9,5 +9,5 @@
 # System = x86_64-unknown-linux-gnu
 
 CC = g++
-# CFLAGS = -I../lib -g++ -O2 -D_REENTRANT -Wall
+CFLAGS = -g -O2 -D_REENTRANT -Wall -pedantic
 LIBS =   
