@@ -12,16 +12,16 @@
  * 
  */
 #include <iostream>
-using namespace std;
+
 
 int main() {
-    unsigned long long cc = 0;
-    cin >> cc;
+    unsigned long int cc = 0;
+    std::cin >> cc;
         unsigned long int sum = 0;
         while (cc > 0) {
             sum += cc % 10;
             cc = cc / 10;
             if ( sum > 9) { cc = sum; sum = 0; }
         }
-    cout << sum;
+    std::cout << sum;
 }
