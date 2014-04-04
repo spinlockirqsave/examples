@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
     float res[4];
     solve1( n, a, b, res);
     std::copy( res, res + 4, std::ostream_iterator<float>( std::cout, ","));
-    solve2( n, &a[0][0], b, res);
+    solve2( n, a[0], b, res); // or solve2( n, &a[0][0], b, res);
     std::copy( res, res + 4, std::ostream_iterator<float>( std::cout, ","));
     return 0;
 }
