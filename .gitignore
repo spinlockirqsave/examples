@@ -1,0 +1,54 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Other
+*.xml
+/algorithms/gcd/
+/algorithms/greatest_common_divisor/build/
+/algorithms/greatest_common_divisor/dist/
+/io/numeric_input/dist/
+/io/numeric_input/build/
+/io/convert_date_format/build/
+/io/convert_date_format/dist/
+/io/money_io/build/
+/io/money_io/dist/
+/io/date_and_time_io/build/
+/io/date_and_time_io/dist/
+/io/date_and_time_moreflexible_io/build/
+/io/date_and_time_moreflexible_io/dist/
+/io/character_classification/dist/
+/io/character_classification/build/
+/io/codecvt/build/
+/io/codecvt/dist/
+/io/codecvt_wchar_t_char/build/
+/io/codecvt_wchar_t_char/dist/
+/io/file_save_open/build/
+/io/file_save_open/dist/
+/algorithms/connected_component/build/
+/algorithms/connected_component/dist/
+/read_from_file/build/
+/read_from_file/dist/
+/cppappl_example_exceptions/other/call_once/build/
+/cppappl_example_exceptions/other/call_once/dist/
+/cppappl_example_exceptions/other/cppapp_access_private_member/dist/
+/cppappl_example_exceptions/other/cppapp_allignment/build/
+/cppappl_example_exceptions/other/cppapp_allignment/dist/
