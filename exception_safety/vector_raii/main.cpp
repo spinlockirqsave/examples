@@ -44,6 +44,7 @@ struct vector_base {
  * that wasn't given fool-proof copy semantics,
  * that destruction of temporary would lead to
  * undesirable side effects
+ * note: just swaping representation
 */
 template<class T>
 void swap( vector_base<T>& a, vector_base<T>& b) {
@@ -114,8 +115,11 @@ vector<T,A>::vector( const vector<T,A>& a)
                                                   { ::new((void *)p) T( val); } */
 }
 
+/* optimized, but just the basic guarantee:
+ * in case of exception thrown there'll be no leaks,
+ * see safe_assign for strong guarantee */
 template<typename T, typename A >
-vector<T,A>& vector<T,A>::operator=( const vector& other) // optimized, basic guarantee
+vector<T,A>& vector<T,A>::operator=( const vector& other)
 {
     if( capacity() < other.size())  // allocate new vector representation
     {
@@ -146,6 +150,65 @@ vector<T,A>& vector<T,A>::operator=( const vector& other) // optimized, basic gu
     }
     
     return *this;
+}
+
+template<typename T, typename A >
+void vector<T,A>::push_back( const T& val)
+{
+    if( space == last)
+    {
+        /* no more free space: relocate */
+        vector_base<T,A> b( alloc, size()? 2 * size() : 2); // double the allocation
+        std::uninitialized_copy( v, space, b.v);       // copy old elements
+        new( b.space) T( val);                         // place a copy of val in *b.space
+        ++b.space;                                     // point space to correct place (1 past last element)
+        destroy_elements();
+        swap<vector_base<T,A> >( b, *this);            // swap representations
+        return;
+    }
+    /* there is a free space */
+    new( space) T( val);                               // place a copy of val in *b.space
+    ++space;                                           // point space to correct place (1 past last element)
+}
+
+
+/* strong guarantee,
+ * does not do spurious copies of elements */
+template<typename T, typename A >
+void safe_assign1( vector<T,A>& a, const vector<T,A>& b)  // "obvious" a = b
+{
+    vector<T,A> tmp( a.get_allocator());
+    tmp.reserve( b.size());
+    for( typename vector<T,A>::iterator p = b.begin(); p != b.end(); ++p) {
+        tmp.push_back( *p);
+    }
+    /* note: swap vectors but swap takes vector_base:
+     * slicing will happen and only representations will be swapped */
+    swap( a, tmp);
+}
+
+/* strong guarantee,
+ * does not do spurious copies of elements,
+ * let the library perform the copy into temporary for us */
+template<typename T, typename A >
+void safe_assign2( vector<T,A>& a, const vector<T,A>& b)  // "obvious" a = b
+{
+    vector<T,A> tmp( b);
+    /* note: swap vectors but swap takes vector_base:
+     * slicing will happen and only representations will be swapped */
+    swap( a, tmp);
+}
+
+/* strong guarantee,
+ * does not do spurious copies of elements,
+ * let the library perform the copy into temporary for us,
+ * indeed we could simply use call-by-value */
+template<typename T, typename A >
+void safe_assign3( vector<T,A>& a, const vector<T,A>& b)  // "obvious" a = b
+{
+    /* note: swap vectors but swap takes vector_base:
+     * slicing will happen and only representations will be swapped */
+    swap( a, b);
 }
 /*
  * 
