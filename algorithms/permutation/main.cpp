@@ -105,9 +105,9 @@ int Permutation::transpositionsCount() const {
 int main(int argc, char** argv) {
                        //1, 2, 3, 4, 5, 6, 7, 8       identity (e)
     int permutation[] = {2, 3, 4, 5, 1, 7, 6, 8}; //  actual (i)
-    std::vector<int> vp(permutation, permutation + 8);
+    std::vector<int> vp( permutation, permutation + 8);
 
-    Permutation p(vp);
+    Permutation p( vp);
     p.make_orbits();
     int k = p.orbits().size();
     std::cout << "Number of cycles:" << k << std::endl;
