@@ -24,7 +24,7 @@
  */
 template<typename T, typename A = std::allocator<T> >
 struct vector_base {
-    A alloc;     // allocator
+        A alloc;     // allocator
         T* v;        // start of allocation
         T* space;    // end of element sequence, start of space allocated for possible expansion
         T* last;     // end of allocated space
@@ -81,6 +81,7 @@ class vector : private vector_base<T,A> {
         void push_back( const T&);
         //...
     private:
+        using vector_base<T,A>::alloc;
         using vector_base<T,A>::v;
         using vector_base<T,A>::space;
         using vector_base<T,A>::last;
@@ -114,7 +115,38 @@ vector<T,A>::vector( const vector<T,A>& a)
 }
 
 template<typename T, typename A >
-void vector<T,A>::push_back( const T& val) {}
+vector<T,A>& vector<T,A>::operator=( const vector& other) // optimized, basic guarantee
+{
+    if( capacity() < other.size())  // allocate new vector representation
+    {
+        vector tmp( other);                          // copy
+        std::swap< vector_base<T,A> >( *this, tmp);  // swap representations
+        return *this;
+    }
+    
+    /* protect against self-assignment */
+    if( this == &other) return *this;
+    
+    /* assign to old elements */
+    size_type sz = size();
+    size_type osz = other.size();
+    alloc = other.get_allocator();  // copy the allocator
+    if( sz >= osz)
+    {
+        /* size is big enough to hold other representation */
+        std::copy( other.begin(), other.begin() + osz, v);  // osz!
+        for( T* p = v + osz; p != space; ++p) p->~T(); // destroy surplus elements (up to space)
+    }
+    else {
+        /* we have memory for T initialized up to space ( size = space - v)
+         * so use assignment operator on this range */
+        std::copy( other.begin(), other.begin() + sz, v);   // sz!
+        /* and copy ctor via placement new on the rest */
+        std::uninitialized_copy( other.begin() + sz, other.end(), space); // construct extra elements
+    }
+    
+    return *this;
+}
 /*
  * 
  */
