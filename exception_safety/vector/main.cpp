@@ -59,7 +59,8 @@ void vector<T,A>::push_back( const T& val) {}
 
 /* ------------------*/
 
-/* improved implementation of above vector */
+/* improved implementation of above vector 
+   using uninitialized_fill directly */
 template<typename T, typename A = std::allocator<T> >
 class vector2 {
     private:
@@ -82,7 +83,7 @@ class vector2 {
         //...
 };
 
-/* approach similar to std::uninitialized fill taken */
+/* approach using uninitialized_fill directly */
 template<typename T, typename A >
 vector2<T,A>::vector2( size_type n, const T& val, const A& a) : alloc( a)  // copy the allocator
 {
