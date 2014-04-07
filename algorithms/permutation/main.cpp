@@ -112,9 +112,9 @@ int main(int argc, char** argv) {
     int k = p.orbits().size();
     std::cout << "Number of cycles:" << k << std::endl;
     
-    for (int i = 0; i < k; ++i) {
-        std::vector<Permutation::ei_element> v = p.orbits()[i];
-        for (int j = 0; j < v.size(); ++j) {
+    for ( int i = 0; i < k; ++i) {
+        std::vector<Permutation::ei_element> v = p.orbits()[ i];
+        for ( int j = 0; j < v.size(); ++j) {
             std::cout << v[ j].e << "," << v[ j].i << " | ";
         }
         std::cout << std::endl;
