@@ -11,6 +11,13 @@
 #include <algorithm>
 #include <iterator>
 
+/* This class represents a permuatation. It, among other things,
+ * can return a number of transpositions needed to convert given
+ * permutation into identity. This is done by creating orbits
+ * (cycles) and counting their lengths. 
+ * Terminology is taken from Kostrikin A., I., "Introduction
+ * to Linear Algebra I".
+ */
 class Permutation {
 public:
     /* element of the orbit*/
@@ -103,8 +110,8 @@ int Permutation::transpositionsCount() const {
  * 
  */
 int main(int argc, char** argv) {
-                       //1, 2, 3, 4, 5, 6, 7, 8       identity (e)
-    int permutation[] = {2, 3, 4, 5, 1, 7, 6, 8}; //  actual (i)
+                       // 1, 2, 3, 4, 5, 6, 7, 8       identity (e)
+    int permutation[] = { 2, 3, 4, 5, 1, 7, 6, 8}; //  actual (i)
     std::vector<int> vp( permutation, permutation + 8);
 
     Permutation p( vp);
