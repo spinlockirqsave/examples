@@ -55,7 +55,8 @@ vector<T,A>::vector( size_type n, const T& val, const A& a) : alloc( a)  // copy
 }
 
 template<typename T, typename A >
-void vector<T,A>::push_back( const T& val) {}
+void vector<T,A>::push_back( const T& val) {
+}
 
 /* ------------------*/
 
