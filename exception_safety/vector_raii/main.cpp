@@ -152,6 +152,15 @@ vector<T,A>& vector<T,A>::operator=( const vector& other)
     return *this;
 }
 
+/* a copy constructor used to initialize *space might throw.
+ * If that happens the vaalue of the vector remains unchanged,
+ * with space left unincremented. In that case the vector elements
+ * are not reallocated so that iterators referring to them are not
+ * invalidated. Thus this implementation implements the strong
+ * guarantee that an exception thrown by an allocator or even
+ * a user-supplied copy constructor leaves the vector unchanged.
+ * The standard library offers that guarantee for push_back.
+ */
 template<typename T, typename A >
 void vector<T,A>::push_back( const T& val)
 {
@@ -160,7 +169,7 @@ void vector<T,A>::push_back( const T& val)
         /* no more free space: relocate */
         vector_base<T,A> b( alloc, size()? 2 * size() : 2); // double the allocation
         std::uninitialized_copy( v, space, b.v);       // copy old elements
-        new( b.space) T( val);                         // place a copy of val in *b.space
+        new( b.space) T( val);                         // place a copy of val in *b.space: might throw
         ++b.space;                                     // point space to correct place (1 past last element)
         destroy_elements();
         swap<vector_base<T,A> >( b, *this);            // swap representations
