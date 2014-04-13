@@ -58,4 +58,3 @@ int main(int argc, char** argv) {
     std::copy( res, res + 4, std::ostream_iterator<float>( std::cout, ","));
     return 0;
 }
-
