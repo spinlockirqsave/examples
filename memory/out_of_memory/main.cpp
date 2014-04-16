@@ -28,8 +28,8 @@ private:
 
 template<class T> 
 new_handler NewHandlerSupport<T>::currentHandler;      // sets currentHandler
-                                    // to 0 (i.e., null) by
-                                    // default
+                                                       // to 0 (i.e., null) by
+                                                       // default
 template<class T> 
 new_handler NewHandlerSupport<T>::set_new_handler( new_handler p)
 {
@@ -40,6 +40,7 @@ new_handler NewHandlerSupport<T>::set_new_handler( new_handler p)
 
 template<class T> 
 void* NewHandlerSupport<T>::operator new(size_t size) {
+    if( size ==0) size = 1;
     new_handler globalHandler =                         // install X's
             std::set_new_handler(currentHandler);       // handler
 
@@ -58,6 +59,7 @@ void* NewHandlerSupport<T>::operator new(size_t size) {
 
 template<class T> 
 void* NewHandlerSupport<T>::operator new[](size_t size) {
+    if( size ==0) size = 1;
     new_handler globalHandler =                         // install X's
             std::set_new_handler(currentHandler);       // handler
 
