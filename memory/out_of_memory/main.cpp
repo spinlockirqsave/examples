@@ -11,9 +11,13 @@
 
 typedef void ( *new_handler)();
 
-template<class T>                    // "mixin-style" base class
-class NewHandlerSupport {            // for class specific 
-public:                              // set_new_handler support
+/* a mixin-style" base class, base class that's designed
+ * to allow derived classes to inherit a single specific
+ * capability — in this case, the ability to set a class
+ * specific new-handler */
+template<class T>
+class NewHandlerSupport {
+public:
     static new_handler set_new_handler(new_handler p);
     static void* operator new(size_t size);
     static void* operator new[](size_t size);
@@ -36,7 +40,7 @@ new_handler NewHandlerSupport<T>::set_new_handler( new_handler p)
 
 template<class T> 
 void* NewHandlerSupport<T>::operator new(size_t size) {
-    new_handler globalHandler = // install X's
+    new_handler globalHandler =                         // install X's
             std::set_new_handler(currentHandler);       // handler
 
     void *memory;
@@ -54,7 +58,7 @@ void* NewHandlerSupport<T>::operator new(size_t size) {
 
 template<class T> 
 void* NewHandlerSupport<T>::operator new[](size_t size) {
-    new_handler globalHandler = // install X's
+    new_handler globalHandler =                         // install X's
             std::set_new_handler(currentHandler);       // handler
 
     void *memory;
