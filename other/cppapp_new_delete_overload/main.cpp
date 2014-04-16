@@ -8,36 +8,57 @@
 #include <cstdlib>
 #include <stdio.h>
 using namespace std;
-
 /*
  * 
  */
-class A
-{
+class A {
 public:
-    A(){printf("A\n");}
-    virtual ~A(){printf("~A\n");} //better make it virtual
-    
-    static void* operator new(size_t t){
+
+    A() {
+        printf("A\n");
+    }
+
+    virtual ~A() {
+        printf("~A\n");
+    } //better make it virtual
+
+    static void* operator new(size_t t) {
         printf("A new, with size %ld\n", t);
         ::operator new(t);
     }
-    static void operator delete(void* t){
+
+    static void operator delete(void* t) {
         printf("A delete\n");
         ::operator delete(t);
     }
-    
-    void check_B(){
+
+    static void* operator new[](size_t t) {
+        printf("A new[] with size %ld\n", t);
+        ::operator new(t);
+    }
+
+    static void operator delete[](void* t) {
+        printf("A delete[]\n");
+        ::operator delete[](t);
+    }
+
+    void check_B() {
         b = new B();
         ::operator delete(b);
     }
 
-    class B{
+    class B {
     public:
-        B(){printf("B\n");}
-        ~B(){printf("~B\n");}
+
+        B() {
+            printf("B\n");
+        }
+
+        ~B() {
+            printf("~B\n");
+        }
     };
-    
+
     B* b;
 };
 
@@ -51,6 +72,7 @@ public:
 int main(void)
 {
     A* a = new A;
+    A* a2 = new A[10];
     printf("\n------\n");
     a->check_B();
     printf("\n------\n");
@@ -61,6 +83,7 @@ int main(void)
     
     delete c;
     delete cc;
+    delete [] a2;
 return 0;
 }
 
