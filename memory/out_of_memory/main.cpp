@@ -103,14 +103,14 @@ int main(int argc, char** argv) {
                                                    // new-handling function
     size_t s = 0x400000000; // 16GB
     try {
-    X *px1 = (X*) X::operator new(s);//new X[s];                                // if memory allocation
+    X *px1 = (X*) X::operator new(s);              // if memory allocation
                                                    // fails, call noMoreMemory
     } catch (std::bad_alloc&) { 
         printf( "bad_alloc catched");
     }
     
     try {
-    X *px1 = new X[s];//new X[s];                                // if memory allocation
+    X *px1 = new X[s];                             // if memory allocation
                                                    // fails, call noMoreMemory
     } catch (std::bad_alloc&) { 
         printf( "bad_alloc catched");
@@ -131,13 +131,15 @@ int main(int argc, char** argv) {
 //                                                   // no new-handling function
 //                                                   // for class X.)
 //    
-//    Y::set_new_handler( noMoreMemoryForX);
-//    Y::set_new_handler( noMoreMemoryForY);
-//                                                   // set noMoreMemoryForY as Y's
-//                                                   // new-handling function
-//
-//    Y *py1 = new Y[s];                                // if memory allocation
-//                                                   // fails, call noMoreMemory
+    Y::set_new_handler( noMoreMemoryForX);
+    Y::set_new_handler( noMoreMemoryForY);
+
+    try {
+        Y *py1 = new Y[s];                             // if memory allocation
+                                                   // fails, call noMoreMemory
+    } catch (std::bad_alloc&) { 
+        printf( "bad_alloc catched");
+    }
 
 
     return 0;
