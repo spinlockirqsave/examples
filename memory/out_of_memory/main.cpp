@@ -89,7 +89,7 @@ void noMoreMemoryForX() {
 }
 
 void noMoreMemoryForY() {
-    std::printf( "noMoreMemoryForX");
+    std::printf( "noMoreMemoryForY");
     throw std::bad_alloc();
 }
     
