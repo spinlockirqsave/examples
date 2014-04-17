@@ -23,9 +23,8 @@ main(int argc, char * argv[])
    if (cpid == 0) // if I am the child then
    {
        close( pipefd[ 0]); // close the read-end of the pipe
-       write( pipefd[ 1], argv[0], strlen(argv[0])); // send name to the server
-       close( pipefd[ 1]); //close the write-end of the pipe,
-                           //send EOF to the server
+       write( pipefd[ 1], "OK", 3); // send name to the server
+       write( 1, "\n", 1);
        exit( EXIT_SUCCESS);
    }
    else // if I am the parent then
@@ -33,8 +32,9 @@ main(int argc, char * argv[])
        close( pipefd[ 1]); // close the write-end of the pipe
        while ( read( pipefd[ 0], &buf, 1) > 0) // read while EOF
            write( 1, &buf, 1);
+       close( pipefd[0]); // close the read-end of the pipe;
+       close( pipefd[ 1]); // close the write-end of the pipe
        write( 1, "\n", 1);
-       close( pipefd[0]); // close the read-end of the pipe
        wait( NULL); // wait for the child process to exit before I do the same
        exit( EXIT_SUCCESS);
    }
