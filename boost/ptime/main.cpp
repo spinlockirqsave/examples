@@ -9,6 +9,8 @@
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/date_time/date.hpp>
 #include <boost/date_time/gregorian/gregorian.hpp>
+
+
 /*
  * 
  */
@@ -27,5 +29,7 @@ int main(int argc, char** argv) {
    std::cout << to_simple_string( t1) << std::endl;
    set_year( 2001, t1);
    std::cout << to_simple_string( t1);
+   
+   return 0;
 }
 
