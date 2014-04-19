@@ -40,7 +40,9 @@ new_handler NewHandlerSupport<T>::set_new_handler( new_handler p)
 
 template<class T> 
 void* NewHandlerSupport<T>::operator new(size_t size) {
-    if( size ==0) size = 1;
+
+    if (size != sizeof(T))                              // if size is "wrong,"
+        return ::operator new(size);                    // have standard operator
     new_handler globalHandler =                         // install X's
             std::set_new_handler(currentHandler);       // handler
 
@@ -59,14 +61,14 @@ void* NewHandlerSupport<T>::operator new(size_t size) {
 
 template<class T> 
 void* NewHandlerSupport<T>::operator new[](size_t size) {
-    if( size ==0) size = 1;
+                  // have standard operator
     new_handler globalHandler =                         // install X's
             std::set_new_handler(currentHandler);       // handler
 
     void *memory;
 
     try {                                               // attempt
-        memory = ::operator new[](size);                  // allocation
+        memory = ::operator new[](size);                // allocation
     } catch (std::bad_alloc&) {                         // restore
         std::set_new_handler(globalHandler);            // handler;
         throw;                                          // propagate exception
@@ -109,17 +111,17 @@ int main(int argc, char** argv) {
                                                    // new-handling function
     size_t s = 0x400000000; // 16GB
     try {
-    X *px1 = (X*) X::operator new(s);              // if memory allocation
+    X *px1 = new X;              // if memory allocation
                                                    // fails, call noMoreMemory
     } catch (std::bad_alloc&) { 
-        printf( "bad_alloc catched");
+        printf( "bad_alloc catched1");
     }
     
     try {
     X *px1 = new X[s];                             // if memory allocation
                                                    // fails, call noMoreMemory
     } catch (std::bad_alloc&) { 
-        printf( "bad_alloc catched");
+        printf( "bad_alloc catched2");
     }
 
 //    std::string *ps = new std::string;             // if memory allocation
@@ -131,7 +133,7 @@ int main(int argc, char** argv) {
 //                                                   // new-handling function
 //                                                   // to nothing (i.e., null)
 //
-//    X *px2 = new X[s];                                // if memory allocation
+//    X *px2 = new X[s];                             // if memory allocation
 //                                                   // fails, throw an exception
 //                                                   // immediately. (There is
 //                                                   // no new-handling function
@@ -141,10 +143,10 @@ int main(int argc, char** argv) {
     Y::set_new_handler( noMoreMemoryForY);
 
     try {
-        Y *py1 = new Y[s];                             // if memory allocation
-                                                   // fails, call noMoreMemory
+        Y *py1 = new Y[s];                           // if memory allocation
+                                                     // fails, call noMoreMemory
     } catch (std::bad_alloc&) { 
-        printf( "bad_alloc catched");
+        printf( "bad_alloc catched3");
     }
 
 
