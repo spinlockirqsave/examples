@@ -1,0 +1,5 @@
+18/06/2012: fixed a bug pointed out by Vincent Mazet (many many thanks to
+Vincent): in case where either box k=ka of k=ka+1 is chosen, the algorithm
+would sample as if k=ka
+
+

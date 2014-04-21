@@ -1,0 +1,22 @@
+C programs included in this archive requires the Gnu Scientific Library, see http://www.gnu.org/software/gsl/
+and the standard math library. 
+
+Python Programs included in this archive are written in Python 2.5, and requires the following standard scientific libraries: 
+* Numpy (numerical arrays)
+* Scipy (scientific tools)
+* Matplotlib (plotting system, à la Matlab)
+
+In addition, you may want to install ipython, a convenient Python shell. 
+
+All these packages are available in the repositories of major Linux distributions.
+For instance, in Ubuntu or Debian, try: 
+sudo aptitude install python-numpy python-scipy python-matplotlib ipython
+
+Then, for instance, run
+ipython -pylab 
+and type
+run -i name_of_program.py
+
+For more exotic Operating Systems, check the Scipy web-site for instructions
+on how to install Scipy and friends:
+http://scipy.org/Installing_SciPy

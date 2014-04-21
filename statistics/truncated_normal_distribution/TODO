@@ -1,0 +1,13 @@
+Nagging me to have these or other features implemented is encouraged! 
+contact: nicolas dot chopin at ensae dot fr 
+
+* bivariate algorithms:
+	Currently implemented in Python, which is not very fast, I plan to translate the programs in C, 
+	and then use my univariate algorithm as the default univariate TG sampler (which would not make 
+	much sense in Python, since Python is not meant to be very fast anyway) 
+
+* univariate algorithms:
+	Finite interval case currently missing, but tidying up my code and adding proper commenting should not
+take me too much time.
+
+

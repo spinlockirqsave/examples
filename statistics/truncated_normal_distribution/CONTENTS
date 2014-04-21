@@ -1,0 +1,41 @@
+Simulation of univariate TG (truncated Gaussian) densities
+see the following paper for more details: 
+Fast simulation of truncated Gaussian variates
+Nicolas Chopin, ENSAE-CREST
+nicolas dot chopin at ensae dot fr 
+
+This archive contains the following files: 
+
+CONTENTS: this file
+INSTALL: how to install and run these programs
+LICENCE: legal stuff (GPL)
+TODO: things that could be improved 
+
+univariate/ 
+   Algorithm for simulating a univariate TG dist. 
+
+   ran_tg.h : header file
+   ran_tg_zig*.c : my algorithm, for different sizes of constant arrays
+   ran_tg_zig.c: my algorithm, with the default size (RECOMMENDED)
+   ran_tg_Devroye.c : Devroye's algorithm
+   ran_tg_reject.c : the naive algorithm
+   ziggurat.c : Marsaglia's ziggurat algorithm (for N(0,1) variables) 
+   main.c : an example on how to compare the different generators
+
+   codegen/
+	Programs for generating the constants in ran_tg_zig.c
+	In order to compile everything, you need to put these files 
+	in the same directory as the files in the parent dictory,
+	but note this will replaces the file ran_tg_zig.c 
+
+	gentab.py : Python script that generates all the constants, and send then to std output
+	beg.c, mid.c, end.c: parts of the ran_tg_zig.c routine which are assembled to form the ran_tg_zig.c routine
+	run.sh : a bash script that generates the c program and compiles it 
+
+bivariate/ 
+    Algorithms for simulating bivariate TG dist. 
+
+    bitg.py: semi-finite intervals
+    bitg_ab.py: finite intervals 
+
+
