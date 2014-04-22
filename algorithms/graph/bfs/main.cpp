@@ -21,9 +21,9 @@ struct Vertex {
     int d;
     int pi;
     std::vector<int> adjacencyList;
-    explicit Vertex() : color( WHITE), d( -1), pi( -1), idx( -1) {}
-    explicit Vertex( int idx) : idx( idx), color( WHITE), d( -1), pi( -1) {}
     int idx;
+    
+    explicit Vertex( int idx) : idx( idx), color( WHITE), d( -1), pi( -1) {}
 };
 
 struct Graph {
@@ -32,6 +32,9 @@ struct Graph {
     
     /* number of vertices*/
     int const N;
+    
+    /* number of edges*/
+    int E;
     
     std::vector<int> const& adjacency( Vertex const& u) const {
         return V[ u.idx].adjacencyList;
@@ -44,18 +47,19 @@ struct Graph {
     /**
      * Constructor with invariant: graph contains normalized
      * vector of vertices with normalized indices and adjacency lists
-     * N is number of vertices in graph
      * @param v vertices
      */
     explicit Graph( std::vector<Vertex>& v) : V( v), N( v.size()) {
 
         std::sort( V.begin(), V.end(), &verticesCompare);
         int i = V[0].idx;
+        
         /* normalize indices to start from 0 */
         if( V[ 0].idx > 0) {
             int norm = V[ 0].idx;
             for( int i = 0; i < N; ++i) {
                 V[ i].idx -= norm;
+                E += V[ i].adjacencyList.size();
                 for( int j = 0; j < V[ i].adjacencyList.size(); ++j) {
                     V[ i].adjacencyList[ j] -= norm;
                 }
@@ -71,6 +75,7 @@ struct Graph {
  * 
  * @param G graph
  * @param s root vertex
+ * complexity O( V + E)
  */
 void breadth_first_search( Graph& G, Vertex& s) {
     BOOST_FOREACH( Vertex u, G.V) {
