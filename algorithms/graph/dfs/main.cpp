@@ -27,6 +27,10 @@ struct Vertex {
     explicit Vertex( int idx) : idx( idx), color( WHITE), d( -1), f( -1), pi( -1) {}
 };
 
+
+/**
+ * Graph, may be undirected or directed
+ */
 struct Graph {
     /* sorted vector of vertices*/
     std::vector<Vertex> V;
@@ -74,7 +78,7 @@ struct Graph {
 
 
 /** 
- * @param G graph
+ * @param G graph, may be undirected or directed
  * @param u vertex
  */
 void depth_first_search( Graph& G, Vertex& u) {
@@ -96,7 +100,7 @@ void depth_first_search( Graph& G, Vertex& u) {
 
 /**
  * complexity O( V + E)
- * @param G graph
+ * @param G graph, may be undirected or directed
  */
 void depth_first_search( Graph& G) {
     BOOST_FOREACH( Vertex u, G.V) {
