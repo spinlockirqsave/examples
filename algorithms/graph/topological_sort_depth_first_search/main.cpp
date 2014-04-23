@@ -110,46 +110,75 @@ void depth_first_search( Graph& G, Vertex& u, std::list<Vertex>& sortedVertices)
  * @param sortedVertices list sorted topologically by this procedure
  */
 void depth_first_search( Graph& G, std::list<Vertex>& sortedVertices) {
-    BOOST_FOREACH( Vertex u, G.V) {
+    BOOST_FOREACH( Vertex& u, G.V) {
         u.color = Vertex::WHITE;
         u.pi = -1;
     }
-    BOOST_FOREACH( Vertex u, G.V) {
+    BOOST_FOREACH( Vertex& u, G.V) {
         if( u.color == Vertex::WHITE) {
             depth_first_search( G, u, sortedVertices);
         }
     }    
 }
 
+void topological_sort( Graph& G, std::list<Vertex>& sortedVertices) {
+    depth_first_search( G, sortedVertices);
+}
+
+void topological_sort_and_reverse( Graph& G, std::list<Vertex>& sortedVertices) {
+    depth_first_search( G, sortedVertices);
+    std::reverse( sortedVertices.begin(), sortedVertices.end());
+}
 
 /*
  * 
  */
 int main(int argc, char** argv) {
+    {
+        std::vector<Vertex> vertices;
+        std::list<Vertex> sortedVertices;
+        for ( int i = 0; i < 8; ++i) {
+            vertices.push_back( Vertex( i));
+        }
 
-    std::vector<Vertex> vertices;
-    std::list<Vertex> sortedVertices;
-    for( int i = 0; i < 8; ++i) {
-        vertices.push_back( Vertex( i));
+        vertices[ 0].adjacencyList.push_back( 2);
+        vertices[ 0].adjacencyList.push_back( 3);
+        vertices[ 1].adjacencyList.push_back( 4);
+        vertices[ 1].adjacencyList.push_back( 5);
+        vertices[ 2].adjacencyList.push_back( 6);
+        vertices[ 3].adjacencyList.push_back( 6);
+        vertices[ 4].adjacencyList.push_back( 6);
+        vertices[ 3].adjacencyList.push_back( 7);
+        vertices[ 4].adjacencyList.push_back( 7);
+
+        Graph g( vertices);
+        topological_sort( g, sortedVertices);
+
+        for ( std::list<Vertex>::const_iterator it = sortedVertices.begin();
+                it != sortedVertices.end(); ++it) {
+            std::cout << ( *it).idx;
+        }
     }
-    
-    vertices[ 0].adjacencyList.push_back( 2);
-    vertices[ 0].adjacencyList.push_back( 3);
-    vertices[ 1].adjacencyList.push_back( 4);
-    vertices[ 1].adjacencyList.push_back( 5);
-    vertices[ 2].adjacencyList.push_back( 6);
-    vertices[ 3].adjacencyList.push_back( 6);
-    vertices[ 4].adjacencyList.push_back( 6);
-    vertices[ 3].adjacencyList.push_back( 7);
-    vertices[ 4].adjacencyList.push_back( 7);
-    
-    Graph g( vertices);
-    depth_first_search( g, sortedVertices);
-    
-    for( std::list<Vertex>::const_iterator it = sortedVertices.begin(); it != sortedVertices.end(); ++it) {
-        std::cout << ( *it).idx;
+
+    {
+        std::cout << std::endl;
+        std::vector<Vertex> vertices;
+        std::list<Vertex> sortedVertices;
+        for ( int i = 0; i < 3; ++i) {
+            vertices.push_back( Vertex( i));
+        }
+
+        vertices[ 1].adjacencyList.push_back( 0); // 1 is "used by" 0
+        vertices[ 1].adjacencyList.push_back( 2); // 1 is "used by" 2
+
+        Graph g( vertices);
+        topological_sort( g, sortedVertices);
+
+        for ( std::list<Vertex>::const_iterator it = sortedVertices.begin();
+                it != sortedVertices.end(); ++it) {
+            std::cout << ( *it).idx;
+        }
     }
-    
     return 0;
 }
 
