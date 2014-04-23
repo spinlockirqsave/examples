@@ -103,11 +103,11 @@ void depth_first_search( Graph& G, Vertex& u) {
  * @param G graph, may be undirected or directed
  */
 void depth_first_search( Graph& G) {
-    BOOST_FOREACH( Vertex u, G.V) {
+    BOOST_FOREACH( Vertex& u, G.V) {
         u.color = Vertex::WHITE;
         u.pi = -1;
     }
-    BOOST_FOREACH( Vertex u, G.V) {
+    BOOST_FOREACH( Vertex& u, G.V) {
         if( u.color == Vertex::WHITE) {
             depth_first_search( G, u);
         }
