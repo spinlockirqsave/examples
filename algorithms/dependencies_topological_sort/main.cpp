@@ -98,6 +98,11 @@ struct Graph {
         if( V[ N - 1].idx != N - 1) throw std::runtime_error( "incorrect indices");
     }
     
+    /**
+     * Constructor with invariant: graph contains normalized
+     * vector of vertices with normalized indices and adjacency lists
+     * @param dependencies array of tasks to be ordered
+     */
     explicit Graph( std::vector<std::vector<int> > const& dependencies)
                   : N( dependencies.size()), V( dependencies.size()), E( 0) {
         int adjMin = std::numeric_limits<int>::max();
@@ -176,8 +181,16 @@ void topological_sort_and_reverse( Graph& G, std::list<Vertex>& sortedVertices) 
     std::reverse( sortedVertices.begin(), sortedVertices.end());
 }
 
-void resolve_orders_dependencies( std::vector<std::vector<int> > const& ordersDependencies,
-                                                            std::vector<int>& sortedOrders) {
+/**
+ * 
+ * @param ordersDependencies array of tasks to be ordered
+ * @param sortedOrders result ordered by dfs according to dependencies
+ *        such that if u contains v as a dependency then v is placed
+ *        before u
+ */
+void resolve_orders_dependencies(
+                std::vector<std::vector<int> > const& ordersDependencies,
+                std::vector<int>& sortedOrders) {
     Graph g( ordersDependencies);
     std::list<Vertex> sortedList;
     topological_sort( g, sortedList);
