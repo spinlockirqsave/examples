@@ -101,6 +101,10 @@ struct Graph {
     /**
      * Constructor with invariant: graph contains normalized
      * vector of vertices with normalized indices and adjacency lists
+     * note: if dependencies[ u] contains v as a dependency then v
+     * should be placed before u, this means that ( v, u) edge has
+     * to be inserted into graph: V[ v] has adjacency V[ u]
+     * other notation is: V[ u] is "used by" V[ v], V[ u] is dependent on V[ v]
      * @param dependencies array of tasks to be ordered
      */
     explicit Graph( std::vector<std::vector<int> > const& dependencies)
@@ -113,7 +117,7 @@ struct Graph {
 
             for( int j = 0; j < dependencies[ i].size(); ++j) {
                 
-                /* [ i, j] is "used by" i, i is dependent on [ i, j] */
+                /* V[ [ i, j]] has adjacency i */
                 V[ dependencies[ i][ j] ].adjacencyList.push_back( i);
                 adjMin = std::min( adjMin, dependencies[ i][ j]);
                 adjMax = std::max( adjMax, dependencies[ i][ j]);
