@@ -80,7 +80,7 @@ struct Graph {
  * @param s root vertex
  */
 void breadth_first_search( Graph& G, Vertex& s) {
-    BOOST_FOREACH( Vertex u, G.V) {
+    BOOST_FOREACH( Vertex& u, G.V) {
         u.color = Vertex::WHITE;
         u.d = -1;
         u.pi = -1;
