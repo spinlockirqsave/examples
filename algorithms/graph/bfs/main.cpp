@@ -72,10 +72,9 @@ struct Graph {
 };
 
 /**
- * 
+ * complexity O( V + E)
  * @param G graph
  * @param s root vertex
- * complexity O( V + E)
  */
 void breadth_first_search( Graph& G, Vertex& s) {
     BOOST_FOREACH( Vertex u, G.V) {
