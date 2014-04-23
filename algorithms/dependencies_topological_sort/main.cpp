@@ -180,7 +180,8 @@ void topological_sort( Graph& G, std::list<Vertex>& sortedVertices) {
     depth_first_search( G, sortedVertices);
 }
 
-void topological_sort_and_reverse( Graph& G, std::list<Vertex>& sortedVertices) {
+void topological_sort_and_reverse(
+                Graph& G, std::list<Vertex>& sortedVertices) {
     depth_first_search( G, sortedVertices);
     std::reverse( sortedVertices.begin(), sortedVertices.end());
 }
@@ -195,11 +196,15 @@ void topological_sort_and_reverse( Graph& G, std::list<Vertex>& sortedVertices) 
 void resolve_orders_dependencies(
                 std::vector<std::vector<int> > const& ordersDependencies,
                 std::vector<int>& sortedOrders) {
+    
     Graph g( ordersDependencies);
+    
     std::list<Vertex> sortedList;
     topological_sort( g, sortedList);
+    
     sortedOrders.resize( sortedList.size());
-    std::transform( sortedList.begin(), sortedList.end(), sortedOrders.begin(), Graph::idx);
+    std::transform( sortedList.begin(), sortedList.end(),
+                        sortedOrders.begin(), Graph::idx);
 }
 
 /*
@@ -257,8 +262,8 @@ int main(int argc, char** argv) {
         std::vector<std::vector<int> > array(3);
         std::vector<int> sortedOrders;
 
-        array[ 1].push_back( 0); // 1 "dependent on" 0
-        array[ 1].push_back( 2); // 1 "depends on" 2
+        array[ 1].push_back( 0); // 1 "is dependent on" 0
+        array[ 1].push_back( 2); // 1 "is dependent on" 2
 
         resolve_orders_dependencies( array, sortedOrders);
 
