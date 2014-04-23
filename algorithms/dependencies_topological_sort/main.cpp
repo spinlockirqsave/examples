@@ -109,9 +109,12 @@ struct Graph {
      */
     explicit Graph( std::vector<std::vector<int> > const& dependencies)
                   : N( dependencies.size()), V( dependencies.size()), E( 0) {
+        
         int adjMin = std::numeric_limits<int>::max();
         int adjMax = std::numeric_limits<int>::min();
+        
         for( int i = 0; i < N; ++i) {
+            
             V[ i].idx = i;
             E += dependencies[ i].size();
 
@@ -123,8 +126,10 @@ struct Graph {
                 adjMax = std::max( adjMax, dependencies[ i][ j]);
             }
         }
+        
         if( E > 0)
             if( adjMax - adjMin != N - 1) throw std::runtime_error( "incorrect indices: dependencies list");
+        
         if( adjMin != 0) normalizeDependenciesLists( adjMin);
     }
     
