@@ -12,9 +12,9 @@
 #include <iostream>
 #include <stdexcept>
 #include <algorithm>
+#include <limits>
 
 #include <boost/foreach.hpp>
-#include <limits>
 
 struct Vertex {
     enum Color { WHITE, GRAY, BLACK};
@@ -143,13 +143,21 @@ void depth_first_search( Graph& G, Vertex& u, std::list<Vertex>& sortedVertices)
     time = time + 1;                           // white vertex u has just
     u.d = time;                                // been discovered
     u.color = Vertex::GRAY;
+    
     BOOST_FOREACH( int idx, G.adjacency( u)) { // explore edge ( u, v)
+        
         Vertex& v = G.V[ idx];
+        
+        /* cyclic dependency check */
+        if( v.color == Vertex::GRAY)
+            throw std::runtime_error( "cyclic dependency");
+        
         if( v.color == Vertex::WHITE) {
             v.pi = u.idx;
             depth_first_search( G, v, sortedVertices);
         }
     }
+    
     u.color = Vertex::BLACK;                   // blacken u; it is finished 
     time = time + 1;
     u.f = time;
@@ -176,6 +184,12 @@ void depth_first_search( Graph& G, std::list<Vertex>& sortedVertices) {
     }    
 }
 
+/**
+ * TOPOLOGICAL SORT produces a topological sort of the directed
+ * acyclic graph provided as its input
+ * @param G                     graph
+ * @param sortedVertices        result
+ */
 void topological_sort( Graph& G, std::list<Vertex>& sortedVertices) {
     depth_first_search( G, sortedVertices);
 }
@@ -265,7 +279,38 @@ int main(int argc, char** argv) {
         array[ 1].push_back( 0); // 1 "is dependent on" 0
         array[ 1].push_back( 2); // 1 "is dependent on" 2
 
-        resolve_orders_dependencies( array, sortedOrders);
+        try {
+            resolve_orders_dependencies( array, sortedOrders);
+        } catch ( std::exception& e) {
+            std::cout << e.what();
+            // search for cyclic dependencies
+            // remove
+            // resolve_orders_dependencies( array, sortedOrders);
+        }
+
+        for ( std::vector<int>::const_iterator it = sortedOrders.begin();
+                it != sortedOrders.end(); ++it) {
+            std::cout << ( *it);
+        }
+    }
+    
+    {
+        std::cout << std::endl;
+        std::vector<std::vector<int> > array(3);
+        std::vector<int> sortedOrders;
+
+        array[ 1].push_back( 0); // 1 "is dependent on" 0
+        array[ 1].push_back( 2); // 1 "is dependent on" 2
+        array[ 2].push_back( 1); // but 2 "is dependent" on 1...
+
+        try {
+            resolve_orders_dependencies( array, sortedOrders);
+        } catch ( std::exception& e) {
+            std::cout << e.what();
+            // search for cyclic dependencies
+            // remove
+            // resolve_orders_dependencies( array, sortedOrders);
+        }
 
         for ( std::vector<int>::const_iterator it = sortedOrders.begin();
                 it != sortedOrders.end(); ++it) {
