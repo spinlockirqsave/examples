@@ -73,11 +73,9 @@ struct Graph {
 };
 
 
-/**
- * 
+/** 
  * @param G graph
  * @param u vertex
- * complexity O( V + E)
  */
 void depth_first_search( Graph& G, Vertex& u) {
     static int time = 0;
@@ -96,6 +94,10 @@ void depth_first_search( Graph& G, Vertex& u) {
     u.f = time;
 }
 
+/**
+ * complexity O( V + E)
+ * @param G graph
+ */
 void depth_first_search( Graph& G) {
     BOOST_FOREACH( Vertex u, G.V) {
         u.color = Vertex::WHITE;
