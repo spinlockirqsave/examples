@@ -8,13 +8,12 @@
 #include <stdio.h>
 #include <vector>
 #include <list>
-#include <queue>
 #include <iostream>
 #include <stdexcept>
 #include <algorithm>
+#include <limits>
 
 #include <boost/foreach.hpp>
-#include <limits>
 
 struct Vertex {
     enum Color { WHITE, GRAY, BLACK};
