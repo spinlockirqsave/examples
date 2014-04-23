@@ -98,13 +98,13 @@ void depth_first_search( Graph& G, Vertex& u, std::list<Vertex>& sortedVertices)
     u.color = Vertex::BLACK;                   // blacken u; it is finished 
     time = time + 1;
     u.f = time;
-    sortedVertices.push_front( u);
+    sortedVertices.push_front( u);             // insert into list of ordered vertices
 }
 
 /**
  * complexity O( V + E)
  * @param G graph, may be undirected or directed
- * @param sortedVertices
+ * @param sortedVertices list sorted topologically by this procedure
  */
 void depth_first_search( Graph& G, std::list<Vertex>& sortedVertices) {
     BOOST_FOREACH( Vertex u, G.V) {
