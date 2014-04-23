@@ -26,6 +26,9 @@ struct Vertex {
     explicit Vertex( int idx) : idx( idx), color( WHITE), d( -1), pi( -1) {}
 };
 
+/**
+ * Graph, may be undirected or directed
+ */
 struct Graph {
     /* sorted vector of vertices*/
     std::vector<Vertex> V;
@@ -73,7 +76,7 @@ struct Graph {
 
 /**
  * complexity O( V + E)
- * @param G graph
+ * @param G graph, may be undirected or directed
  * @param s root vertex
  */
 void breadth_first_search( Graph& G, Vertex& s) {
