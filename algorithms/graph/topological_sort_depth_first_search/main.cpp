@@ -103,6 +103,9 @@ void depth_first_search( Graph& G, Vertex& u, std::list<Vertex>& sortedVertices)
 
 /**
  * complexity O( V + E)
+ * since it take O( V + E) to perform depth first search
+ * and O( 1) time to insert each of the |V| vertices onto
+ * the front of the linked list
  * @param G graph, may be undirected or directed
  * @param sortedVertices list sorted topologically by this procedure
  */
