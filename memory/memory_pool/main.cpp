@@ -5,16 +5,16 @@
  * Created on April 24, 2014, 10:15 PM
  */
 
-     /* 
-     * operator new and operator delete must be written
-     * in concert so that they share the same assumptions
-     */
+/* 
+* operator new and operator delete must be written
+* in concert so that they share the same assumptions
+*/
 #include <iostream>
 
 template< class T, class U>
 class Pool {
 public:
-    Pool(){}
+
     Pool( size_t blockSize);             // Create an allocator for
                                          // objects of size sizeof( T)
 
@@ -40,6 +40,7 @@ private:
     // it's initialized below
     const int BLOCK_SIZE;
     
+// this has been moved to template base:
 //    union {
 //        U *rep;    // for objects in use
 //        T *next;   // for objects on free list
@@ -57,11 +58,20 @@ Pool<T,U>::~Pool() {
         ::operator delete( headOfFreeList);
 }
 
-class AirplaneRep {             // representation for an Airplane object
+class AirplaneRep {             // fake representation for an Airplane object
 };
 
-class Airplane {                // modified class — now supports
-public:                         // custom memory management
+template< class T, class U>
+class PoolFriendly {
+protected:
+    union {
+        U *rep;             // for objects in use
+        T *next; // for objects on free list
+    };    
+};
+
+class Airplane : PoolFriendly<Airplane,AirplaneRep> {   // modified class — now supports
+public:                                                 // custom memory management
 
     static void * operator new( size_t size);
     static void operator delete( void* deadObject, size_t size);
@@ -71,23 +81,18 @@ public:                         // custom memory management
 private:
     friend class Pool<Airplane,AirplaneRep>;
     static Pool<Airplane,AirplaneRep> memoryPool;
-
-    union {
-        AirplaneRep *rep; // for objects in use
-        Airplane *next; // for objects on free list
-    };
-
 };
+
+inline void * Airplane::operator new( size_t size) {
+    return memoryPool.alloc( size);
+}
+
+inline void Airplane::operator delete( void *p, size_t size) {
+    memoryPool.free( p, size);
+}
 
 template< class Airplane, class AirplaneRep>
 Airplane* Pool<Airplane,AirplaneRep>::headOfFreeList;     // static members are initialized to 0 by default
-
-    inline void * Airplane::operator new( size_t size)
-    { return memoryPool.alloc( size); }
-
-    inline void Airplane::operator delete( void *p,
-                                          size_t size)
-    { memoryPool.free( p, size); }
 
 // create a new pool for Airplane objects; this goes in
 // the class implementation file
