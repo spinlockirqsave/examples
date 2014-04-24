@@ -58,47 +58,6 @@ Pool<T,U>::~Pool() {
         ::operator delete( headOfFreeList);
 }
 
-class AirplaneRep {             // fake representation for an Airplane object
-};
-
-template< class T, class U>
-class PoolFriendly {
-protected:
-    union {
-        U *rep;             // for objects in use
-        T *next; // for objects on free list
-    };    
-};
-
-class Airplane : PoolFriendly<Airplane,AirplaneRep> {   // modified class — now supports
-public:                                                 // custom memory management
-
-    static void * operator new( size_t size);
-    static void operator delete( void* deadObject, size_t size);
-
-    //...
-
-private:
-    friend class Pool<Airplane,AirplaneRep>;
-    static Pool<Airplane,AirplaneRep> memoryPool;
-};
-
-inline void * Airplane::operator new( size_t size) {
-    return memoryPool.alloc( size);
-}
-
-inline void Airplane::operator delete( void *p, size_t size) {
-    memoryPool.free( p, size);
-}
-
-template< class Airplane, class AirplaneRep>
-Airplane* Pool<Airplane,AirplaneRep>::headOfFreeList;     // static members are initialized to 0 by default
-
-// create a new pool for Airplane objects; this goes in
-// the class implementation file
-Pool<Airplane,AirplaneRep> Airplane::memoryPool( 512);
-
-
 template< class T, class U>
 void * Pool<T,U>::alloc( size_t size) {
     
@@ -157,12 +116,90 @@ void Pool<T,U>::free(  void *p, size_t size) {
     carcass->next = headOfFreeList;
     headOfFreeList = carcass;
     
-    /* memory leak: we are never returning allocated blocks
-     * what should be done when application exits or similar
-     * For this purpose we should use static Pool object 
+    /* for the purpose of returning allocated blocks
+     * what should be done when application exits
+     * we use static Pool destructor
      */
 }
 
+/* enable memory pool allocation feature for class T
+ * with U representation */
+template< class T, class U>
+class PoolFriendly {
+protected:
+    union  {
+        U *rep;                 // for objects in use
+        T *next;                // for objects on free list
+    };
+};
+
+
+
+class AirplaneRep {             // fake representation for an Airplane object
+};
+
+class Airplane : PoolFriendly<Airplane, AirplaneRep> {   // modified class — now supports
+public:                                                  // custom memory management
+
+    static void * operator new( size_t size);
+    static void operator delete( void* deadObject, size_t size);
+
+    //...
+
+private:
+    friend class Pool<Airplane,AirplaneRep>;
+    static Pool<Airplane,AirplaneRep> memoryPool;
+};
+
+inline void * Airplane::operator new( size_t size) {
+    return memoryPool.alloc( size);
+}
+
+inline void Airplane::operator delete( void *p, size_t size) {
+    memoryPool.free( p, size);
+}
+
+template< class T, class U>
+T* Pool<T,U>::headOfFreeList;     // static members are initialized to 0 by default
+
+// create a new pool for Airplane objects; this goes in
+// the class implementation file
+Pool<Airplane,AirplaneRep> Airplane::memoryPool( 512);
+
+
+/* Something */
+
+class SomethingRep {             // fake representation for an Something object
+    char fill[ 0x400]; // 1 KB
+};
+
+class Something : PoolFriendly<Something, SomethingRep> {   // modified class — now supports
+public:                                                     // custom memory management
+
+    static void * operator new( size_t size);
+    static void operator delete( void* deadObject, size_t size);
+
+    Something() {
+        rep = new SomethingRep;
+    }
+    //...
+
+private:
+    friend class Pool<Something,SomethingRep>;
+    static Pool<Something,SomethingRep> memoryPool;
+};
+
+inline void * Something::operator new( size_t size) {
+    return memoryPool.alloc( size);
+}
+
+inline void Something::operator delete( void *p, size_t size) {
+    memoryPool.free( p, size);
+}
+
+// create a new pool for Airplane objects; this goes in
+// the class implementation file
+Pool<Something,SomethingRep> Something::memoryPool( 512);
 
 
 
@@ -183,6 +220,9 @@ int main(int argc, char** argv) {
      * in concert so that they share the same assumptions
      */
     delete pa;  // OK as delete is overloaded properly
+    
+    Something* ps = new Something();
+    delete ps;
 
      /* memory leak: we are never returning allocated blocks
      * what should be done when application exits or similar
