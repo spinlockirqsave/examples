@@ -151,6 +151,9 @@ private:
     static Pool<Airplane,AirplaneRep> memoryPool;
 };
 
+/* Given this Pool class, even a Java programmer can add
+ * custom memory management capabilities to Airplane
+ * without breaking a sweat */
 inline void * Airplane::operator new( size_t size) {
     return memoryPool.alloc( size);
 }
@@ -189,6 +192,9 @@ private:
     static Pool<Something,SomethingRep> memoryPool;
 };
 
+/* Given this Pool class, even a Java programmer can add
+ * custom memory management capabilities to Something
+ * without breaking a sweat */
 inline void * Something::operator new( size_t size) {
     return memoryPool.alloc( size);
 }
@@ -220,9 +226,11 @@ int main(int argc, char** argv) {
      * in concert so that they share the same assumptions
      */
     delete pa;  // OK as delete is overloaded properly
+    pa = 0;
     
     Something* ps = new Something();
     delete ps;
+    ps = 0;
 
      /* memory leak: we are never returning allocated blocks
      * what should be done when application exits or similar
