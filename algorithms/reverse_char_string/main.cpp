@@ -3,6 +3,7 @@
  * Author: piter cf16 eu
  *
  * Created on April 29, 2014, 3:00 PM
+ * http://stackoverflow.com/questions/784417/reversing-a-string-in-c
  */
 
 #include <stdio.h>
