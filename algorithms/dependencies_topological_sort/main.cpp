@@ -5,7 +5,6 @@
  * Created on April 23, 2014, 11:40 AM
  */
 
-#include <stdio.h>
 #include <vector>
 #include <list>
 #include <queue>
@@ -33,11 +32,12 @@ struct Vertex {
  * Graph, directed acyclic ( dag)
  */
 struct Graph {
-    /* sorted vector of vertices*/
-    std::vector<Vertex> V;
     
     /* number of vertices*/
     int const N;
+    
+    /* sorted vector of vertices*/
+    std::vector<Vertex> V;
     
     /* Number of edges. Edge ( u, v) indicates that
      * u "is used by" v, so v "depends on" u */
@@ -104,7 +104,7 @@ struct Graph {
      * note: if dependencies[ u] contains v as a dependency then v
      * should be placed before u, this means that ( v, u) edge has
      * to be inserted into graph: V[ v] has adjacency V[ u]
-     * other notation is: V[ u] is "used by" V[ v], V[ u] is dependent on V[ v]
+     * other notation is: V[ u] is "used by" V[ v], V[ v] is dependent on V[ u]
      * @param dependencies array of tasks to be ordered
      */
     explicit Graph( std::vector<std::vector<int> > const& dependencies)
@@ -325,6 +325,3 @@ int main(int argc, char** argv) {
     
     return 0;
 }
-
-
-
