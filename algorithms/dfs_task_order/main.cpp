@@ -87,9 +87,8 @@ int main(int argc, char** argv) {
 
     for ( std::vector<int>::const_iterator it = res.begin();
             it != res.end(); ++it) {
-        std::cout << (*it);
+        std::cout << ( *it);
     }
     
     return 0;
 }
-
