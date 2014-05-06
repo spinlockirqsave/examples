@@ -256,7 +256,6 @@ typedef UInt32              UIntN;
 }
 
 
-
 #define COPY_SHIFT(shift) {                                         \
     UIntN* dstN  = (UIntN*)((((UIntN)dst8) PRE_LOOP_ADJUST) &       \
                              ~(TYPE_WIDTH - 1));                    \
