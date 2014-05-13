@@ -53,6 +53,8 @@ int main(int argc, char** argv) {
     bool b0 = heron_3d( 3, 3, 0, 5, 5, 4);  // true
     bool b1 = heron_3d( 3, 3.1, 0.1, 5.1, 5, 4); // false
     bool b2 = heron_3d( 3, 5, 2, std::sqrt( 16 + 25), 5, 4); // true
+    bool b3 = heron_3d( 9.8994949366, 12.3288280059, 11.0453610172,
+                           2.8284271247, 8.8317608663, 12.3288280059);  // fail due to floating point arithmetic
     return 0;
 }
 
