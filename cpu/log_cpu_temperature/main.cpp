@@ -208,8 +208,6 @@ int get_cpu_temperature( double* t)
             t[i] /= get_type_scaling( SENSORS_SUBFEATURE_TEMP_INPUT);
         } else
             return -SENSORS_ERR_KERNEL;
-
-        printf( "%lf\n", t[i]);
     }
 }
 
@@ -222,15 +220,20 @@ struct Line {
 int main(void) {
     
     int lines = 0;
-    //struct Line head = { '\0', 0};
-    struct Line* head = (Line*)malloc( sizeof(Line));;
+    struct Line* head = 0;
     struct Line* tail = 0;
     
     while(1)
     {
-        usleep(2000000) ;
-        if( get_cpu_temperature( AMD_FX_4100_tempInfo) < 0)
+        usleep(4000000) ;
+        FILE* log;
+        if( ( log = fopen( "/home/piter/log/log_cpu_temperature.txt", "w")) == 0) {
+            exit(-1);
+        }
+        if( get_cpu_temperature( AMD_FX_4100_tempInfo) < 0) {
+            fprintf( log, "error get_cpu_temperature\n");
             exit( -1);
+        }
         if( lines == 5)
         {
             struct Line* new_head = head->pred;
@@ -239,14 +242,16 @@ int main(void) {
             head->next = 0;
             --lines;
         }
+        
         struct Line* new_line = (Line*)malloc( sizeof(Line));
-        char buff[20];
         struct tm* gmt;
         time_t now = time(0);
         gmt = gmtime( &now);
-        strftime ( new_line->line, sizeof( new_line->line), "%Y-%m-%d %H:%M:%S", gmt);
-        //sprintf( new_line->line, "temp1: %lf, temp2: %lf, temp3: %lf",
-        //        AMD_FX_4100_tempInfo[0], AMD_FX_4100_tempInfo[1], AMD_FX_4100_tempInfo[2]);
+        char buff[50];
+        strftime ( new_line->line, sizeof( new_line->line), "%Y-%m-%d %H:%M:%S, ", gmt);
+        sprintf( buff, "temp1: %.4lf, temp2: %.4lf, temp3: %.4lf",
+                AMD_FX_4100_tempInfo[0], AMD_FX_4100_tempInfo[1], AMD_FX_4100_tempInfo[2]);
+        strcat( new_line->line, buff);
         new_line->next = tail;
         if( tail) tail->pred = new_line;
         new_line->pred = 0;
@@ -254,9 +259,6 @@ int main(void) {
         ++lines;
         if( lines == 1) head = new_line;
         
-        FILE* log;
-        if( ( log = fopen( "/home/piter/log/log_cpu_temperature.txt", "w")) == 0)
-            exit(-1);
         for( struct Line* pl = head; ; pl = pl->pred) {
             if( fprintf( log, "%s\n", pl->line) < 0)
                 exit(-1);

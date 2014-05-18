@@ -1,3 +1,3 @@
 all: logcputemp
 logcputemp: main.o
-	g++ -g main.cpp
+	g++ -g -o logcputemp main.cpp
