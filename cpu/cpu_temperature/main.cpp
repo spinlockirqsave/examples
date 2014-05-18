@@ -5,6 +5,10 @@
  * Created on May 17, 2014, 9:59 PM
  * 
  * Read the CPU temperature on AMD FX 4100 Quad Core
+ * based on lm-sensors code
+ * http://lm-sensors.org/browser/lm-sensors/trunk/lib/sysfs.c
+ * and answer of Blue Moon
+ * http://stackoverflow.com/a/23716850/1141471
  */
 
 #include <stdio.h>
