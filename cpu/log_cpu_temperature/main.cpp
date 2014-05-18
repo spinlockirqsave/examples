@@ -19,6 +19,8 @@
 #include <unistd.h>
 #include <string.h>
 
+#define MAX_LINE_COUNT 20         /* number of measurements */
+
 #define SENSORS_ERR_WILDCARDS	1 /* Wildcard found in chip name */
 #define SENSORS_ERR_NO_ENTRY	2 /* No such subfeature known */
 #define SENSORS_ERR_ACCESS_R	3 /* Can't read */
@@ -234,7 +236,7 @@ int main(void) {
             fprintf( log, "error get_cpu_temperature\n");
             exit( -1);
         }
-        if( lines == 20)
+        if( lines == MAX_LINE_COUNT)
         {
             struct Line* new_head = head->pred;
             free( head);
