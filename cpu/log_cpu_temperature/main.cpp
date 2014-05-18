@@ -234,7 +234,7 @@ int main(void) {
             fprintf( log, "error get_cpu_temperature\n");
             exit( -1);
         }
-        if( lines == 5)
+        if( lines == 20)
         {
             struct Line* new_head = head->pred;
             free( head);
