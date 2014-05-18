@@ -15,7 +15,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <errno.h>
-using namespace std;
+
 
 #define SENSORS_ERR_WILDCARDS	1 /* Wildcard found in chip name */
 #define SENSORS_ERR_NO_ENTRY	2 /* No such subfeature known */
