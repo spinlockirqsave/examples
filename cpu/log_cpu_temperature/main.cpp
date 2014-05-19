@@ -183,9 +183,9 @@ double AMD_FX_4100_tempInfo[ TEMP_IDX_MAX];
 int get_cpu_temperature( double* t)
 {
     FILE *f;
-    const char* n[] = {"/sys/class/hwmon/hwmon2/device/temp1_input",
-                       "/sys/class/hwmon/hwmon2/device/temp2_input",
-                       "/sys/class/hwmon/hwmon2/device/temp3_input"};
+    const char* n[] = {"/sys/class/hwmon/hwmon0/device/temp1_input",
+                       "/sys/class/hwmon/hwmon0/device/temp2_input",
+                       "/sys/class/hwmon/hwmon0/device/temp3_input"};
 
     for ( int i = 0; i < TEMP_IDX_MAX; ++i) {
         if ( ( f = fopen( n[i], "r"))) {
