@@ -18,9 +18,9 @@ typedef void ( *new_handler)();
 template<class T>
 class NewHandlerSupport {
 public:
-    static new_handler set_new_handler(new_handler p);
-    static void* operator new(size_t size);
-    static void* operator new[](size_t size);
+    static new_handler set_new_handler( new_handler p);
+    static void* operator new( size_t size);
+    static void* operator new[]( size_t size);
 
 private:
     static new_handler currentHandler;
