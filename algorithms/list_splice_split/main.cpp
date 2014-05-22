@@ -3,6 +3,8 @@
  * Author: piter cf16 eu
  *
  * Created on May 22, 2014, 2:43 AM
+ * 
+ * http://stackoverflow.com/q/23794679/1141471
  */
 
 #include <iostream>
