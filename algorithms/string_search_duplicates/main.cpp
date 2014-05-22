@@ -51,13 +51,12 @@ int findDuplicates( std::string& in, std::map<std::string, int>& m) {
  */
 int main(int argc, char** argv) {
 
-    std::ifstream ifs( "/home/piter/Downloads/robust-arithmetic.ps");
-    std::string str((std::istreambuf_iterator<char>( ifs)),
-                 std::istreambuf_iterator<char>());
-    std::cout << str.size() << std::flush;
-    std::string in( "j73vd6hdk9382haswm03hs84mmsg73flw94ncjd93k9dj3ndi5jf95j");
+    std::ifstream ifs( "/home/piter/Downloads/Sheetal05Singular.pdf");
+    std::string in( ( std::istreambuf_iterator<char>( ifs)),
+                      std::istreambuf_iterator<char>());
+
     std::map<std::string, int> duplicates;
-    int rc = findDuplicates( str, duplicates);
+    int rc = findDuplicates( in, duplicates);
     
     std::map<std::string, int>::iterator it = duplicates.begin();
     while( it != duplicates.end()) {
