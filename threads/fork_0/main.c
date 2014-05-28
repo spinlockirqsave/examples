@@ -35,18 +35,18 @@ int main(int argc, char** argv) {
      * 1st child of 18103, the 18112 forks 1 time
      * detailed description: below main
      */                                 // P - parent after fork
-    int pid;                            // c - child after fork                                    18099
-    int i = 0;                          //                                                  P,0,18099 c18101
-    for( i = 0; i < 4; ++i)             //                             P,0,18099 c18102                             P18101 c18103
-        pid = fork();                   //               P,0,18099 c18104        P18102 c18110          P18101 c18105      P18103 c18112
-                                        // P,0,main,18099 c18106  P c,18107  P c18111  P c18115     P c18118  P c18109   P c18113  P c18114   
+    int pid;                            // c - child after fork                                  18099
+    int i = 0;                          //                                                 P,18099 c18101
+    for( i = 0; i < 4; ++i)             //                             P,18099 c18102                             P18101 c18103
+        pid = fork();                   //               P,18099 c18104        P18102 c18110          P18101 c18105      P18103 c18112
+                                        // P,main,18099 c18106  P c,18107  P c18111  P c18115     P c18118  P c18109   P c18113  P c18114   
     sleep(1);
     printf("fork, pid:%d\n", pid);
     (*glob_var)++;
     fflush( stdout);
     
     sleep(1);
-    
+    /* I am child, print */
     if( pid==0) printf( "glob_var:%d\n", *glob_var);
     fflush( stdout);
     sleep(10);
