@@ -34,12 +34,12 @@ int main(int argc, char** argv) {
      * 2nd child of 18101, the 18105 forks 1 time
      * 1st child of 18103, the 18112 forks 1 time
      * detailed description: below main
-     */
-    int pid;
-    int i = 0;
-    for( i = 0; i < 4; ++i)
-        pid = fork();
-    
+     */                                 // P - parent after fork
+    int pid;                            // c - child after fork                                    18099
+    int i = 0;                          //                                                  P,0,18099 c18101
+    for( i = 0; i < 4; ++i)             //                             P,0,18099 c18102                             P18101 c18103
+        pid = fork();                   //               P,0,18099 c18104        P18102 c18110          P18101 c18105      P18103 c18112
+                                        // P,0,main,18099 c18106  P c,18107  P c18111  P c18115     P c18118  P c18109   P c18113  P c18114   
     sleep(1);
     printf("fork, pid:%d\n", pid);
     (*glob_var)++;
@@ -77,3 +77,34 @@ piter     18115 18110  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/example
 piter     18121 18010  0 19:47 pts/2    00:00:00 grep --color=auto fork_0
 */
 
+/*
+ *output from other run
+ *  
+fork, pid:18801
+fork, pid:18797
+fork, pid:18800
+fork, pid:18799
+fork, pid:18805
+fork, pid:18804
+fork, pid:0
+fork, pid:0
+fork, pid:18803
+fork, pid:0
+fork, pid:18806
+fork, pid:0
+fork, pid:0
+fork, pid:0
+fork, pid:0
+fork, pid:0
+glob_var:16
+glob_var:16
+glob_var:16
+glob_var:16
+glob_var:16
+glob_var:16
+glob_var:16
+glob_var:16
+
+RUN SUCCESSFUL (total time: 12s)
+
+ */
