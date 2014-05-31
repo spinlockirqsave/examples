@@ -11,8 +11,8 @@
 
 void xor_swap_as( int* a, int* b) {
     __asm__(
-        //"pushq   %rbp;"             note: omiting pushing a frame second time!
-        //"movq   %rsp, %rbp;"              and grabing arguments!
+        //"pushq   %rbp;"             note: omitting pushing a frame second time!
+        //"movq   %rsp, %rbp;"              and grabbing arguments!
         //"movq    %rdi, -8(%rbp);"
         //"movq    %rsi, -16(%rbp);"
         "movq    -8(%rbp), %rax;"
@@ -35,7 +35,8 @@ void xor_swap_as( int* a, int* b) {
         "movl    (%rax), %eax;"
         "xorl    %eax, %edx;"
         "movq    -8(%rbp), %rax;"
-        "movl    %edx, (%rax);"
+        "movl    %edx, (%rax);"     
+                                   // note: omitting leaveq retq 2nd time!
     );
 }
 /*
