@@ -16,19 +16,21 @@ void xor_swap_as( int* a, int* b) {
         //"movq    %rdi, -8(%rbp);"
         //"movq    %rsi, -16(%rbp);"
         "movq    -8(%rbp), %rax;"
-        "movl    (%rax), %edx;"
+        "movl    (%rax), %edx;"         // dereference a
         "movq    -16(%rbp), %rax;"
+        "movl    (%rax), %eax;"         // dereference b
+        "xorl    %eax, %edx;"           // xor
+        "movq    -8(%rbp), %rax;"
+        "movl    %edx, (%rax);"         // put result into a
+            
+        "movq    -16(%rbp), %rax;"
+        "movl    (%rax), %edx;"
+        "movq    -8(%rbp), %rax;"
         "movl    (%rax), %eax;"
         "xorl    %eax, %edx;"
-        "movq    -8(%rbp), %rax;"
-        "movl    %edx, (%rax);"
-        "movq    -16(%rbp), %rax;"
-        "movl    (%rax), %edx;"
-        "movq    -8(%rbp), %rax;"
-        "movl    (%rax), %eax;"
-        "xorl    %eax, %edx;"
         "movq    -16(%rbp), %rax;"
         "movl    %edx, (%rax);"
+            
         "movq    -8(%rbp), %rax;"
         "movl    (%rax), %edx;"
         "movq    -16(%rbp), %rax;"
