@@ -10,15 +10,23 @@
 #include <vector>
 #include <iterator>
 
-int gcd(int a, int b)
+/* standard */
+int 
+gcd ( int a, int b )
 {
-    for (;;)
-    {
+  int c;
+  while ( a != 0 ) {
+     c = a; a = b%a;  b = c;
+  }
+  return b;
+}
+
+/* recursive */
+int 
+gcdr(int a, int b)
+{
         if (a == 0) return b;
-        b %= a;
-        if (b == 0) return a;
-        a %= b;
-    }
+        return gcdr ( b%a, a );
 }
 
 //int lcm(int a, int b)
@@ -32,11 +40,16 @@ int main( int argc, char** argv)
 {
     std::cout << "numbers:\t";
     std::vector<int> v;
-    std::copy( std::istream_iterator<int>( std::cin), std::istream_iterator<int>(),
-                                                         std::back_inserter( v));
+    v.push_back(15);
+    v.push_back(5);
+    v.push_back(10);
+    
+    //std::copy( std::istream_iterator<int>( std::cin), std::istream_iterator<int>(),
+    //                                                     std::back_inserter( v));
 
     int result = std::accumulate( v.begin(), v.end(), v[0], gcd);
 
     std::cout << result << '\n';
+    std::cout << v.size() << '\n';
     return 0;
 }
