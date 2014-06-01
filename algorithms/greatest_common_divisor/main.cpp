@@ -7,15 +7,23 @@
 #include <iostream>
 #include <stdio.h>
 
-int gcd(int a, int b)
+/* standard */
+int 
+gcd ( int a, int b )
 {
-    for (;;)
-    {
+  int c;
+  while ( a != 0 ) {
+     c = a; a = b%a;  b = c;
+  }
+  return b;
+}
+
+/* recursive */
+int 
+gcdr(int a, int b)
+{
         if (a == 0) return b;
-        b %= a;
-        if (b == 0) return a;
-        a %= b;
-    }
+        return gcdr ( b%a, a );
 }
 
 //int lcm(int a, int b)
