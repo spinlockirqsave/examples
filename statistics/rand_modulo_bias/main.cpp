@@ -9,6 +9,8 @@
  * in order to trim the domain
  * 
  * http://stackoverflow.com/a/24069874/1141471
+ * http://localhost:8084/files/rand_modulo_bias_1.jpg
+ * http://localhost:8084/files/rand_modulo_bias_2.jpg
  */
 
 #include <iostream>
