@@ -9,8 +9,7 @@
 
 using namespace std;
 
-class A{ public: virtual void foo() { cout << "A.foo\n";}
-};
+class A{ public: virtual void foo() { cout << "A.foo\n";}};
 
 class B{ public: void foo() { cout << "B.foo\n";}};
 
