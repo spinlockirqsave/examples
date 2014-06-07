@@ -103,7 +103,7 @@ struct Graph {
      * note: if dependencies[ u] contains v as a dependency then v
      * should be placed before u, this means that ( v, u) edge has
      * to be inserted into graph: V[ v] has adjacency V[ u]
-     * other notation is: V[ u] is "used by" V[ v], V[ u] is dependent on V[ v]
+     * other notation is: V[ u] is "used by" V[ v], V[ v] is dependent on V[ u]
      * @param dependencies array of tasks to be ordered
      */
     explicit Graph( std::vector<std::vector<int> > const& dependencies)
