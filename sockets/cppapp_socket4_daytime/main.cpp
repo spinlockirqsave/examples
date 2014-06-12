@@ -3,7 +3,10 @@
  * Author: piter  cf16.eu
  *
  * Created on July 24, 2013, 1:21 AM
- * A daytime service implementation as in RFC 867
+ * 
+ * TCP daytime service according to RFC 867, May 1983
+ * Returns ASCII character string in the form:
+ * Tuesday, February 22, 1982 17:37:43-PST
  * http://tools.ietf.org/html/rfc867
  */
 
