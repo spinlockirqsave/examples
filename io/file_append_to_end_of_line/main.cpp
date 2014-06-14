@@ -19,7 +19,7 @@ int main() {
     std::string filename = "file.txt", line;
     std::ifstream ifs( filename.c_str(), std::ios::in);
     
-    if (!ifs) // check if the file exists and can be read
+    if ( !ifs) // check if the file exists and can be read
         throw std::runtime_error( "cannot open the file");
 
     std::stringstream buffer; // buffer to store the lines
@@ -27,9 +27,9 @@ int main() {
     while ( getline( ifs, line)) {
         
         int previous_value;
-        std::istringstream iss(line.substr(line.find_last_not_of(" ")));
+        std::istringstream iss( line.substr( line.find_last_not_of(" ")));
         iss >> previous_value;
-        buffer << line << "\t" << (previous_value + 2) << "\n"; // add integer
+        buffer << line << "\t" << ( previous_value + 2) << "\n"; // add integer
     }
 
     std::ofstream ofs( filename.c_str(), std::ios::out); // ofstream buffer
