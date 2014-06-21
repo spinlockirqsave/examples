@@ -5,6 +5,7 @@
  * Created on June 21, 2014, 12:27 PM
  * 
  * Cases when x - 1 can't be represented other that x
+ * Have a nice day.
  */
 
 #include <iostream>
