@@ -88,6 +88,17 @@ private:
   int a;
 };
 
+/* allow only stack allocation */
+class OnlyStack {
+    private:
+
+    static void *operator new( std::size_t size);
+    static void operator delete( void *ptr);
+};
+
+class NotHappy : public OnlyStack {
+    int u;
+};
 
 /*
  *
@@ -98,6 +109,9 @@ int main() {
     Asset *ap = new Asset;
 
     std::cout << a.isOnHeap() << ap->isOnHeap();
+
+    NotHappy n;
+    NotHappy* pnh = new NotHappy; // error: OnlyStack::operator new is private
 
     return 0;
 }
