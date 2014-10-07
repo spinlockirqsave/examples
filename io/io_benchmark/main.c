@@ -6,7 +6,7 @@
  *
  * Measure & compare io in C or C++ environment.
  
- Results on x64 Windows8 IntelCore2Duo 3.16GHz
+ Results on x64 Windows8 IntelCore2Duo 3.16GHz 3.16GHz
  $ perl run_numbers.pl 
 Number of runs:3
 Number of numbers to process:500000
