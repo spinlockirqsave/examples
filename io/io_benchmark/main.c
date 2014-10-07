@@ -44,7 +44,7 @@ int main(int argc, char** argv)
 
     for ( ; VALUES; --VALUES) {
       fscanf( f,"%lf", &d);
-      printf( "%lf", d);
+      printf( "%10.5f", d);
 #else
       ifstream f( "numbers.txt", ios_base::in);
       if( !f.is_open()) {
@@ -55,7 +55,12 @@ int main(int argc, char** argv)
 
     for ( ; VALUES; --VALUES) {
       f >> d;
-      cout << d << "\t";
+      cout  << setw(10)
+      << setprecision(5)
+      << setiosflags(ios::showpoint)
+      << setiosflags(ios::fixed)
+      << d;
+
 #endif
 
     if (n % 5 == 0) {

@@ -8,13 +8,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//#define STDIO
+#undef STDIO
 
 #ifdef STDIO
 #include <stdio.h>
 #else
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 #endif
 
@@ -55,7 +56,11 @@ int main(int argc, char** argv)
 
     for ( ; VALUES; --VALUES) {
       f >> d;
-      cout << d << "\t";
+      cout  << std::setw(10)
+      << std::setprecision(5)
+      << std::setiosflags( ios::showpoint)
+      << std::setiosflags( ios::fixed)
+      << d;
 #endif
 
     if (n % 5 == 0) {
