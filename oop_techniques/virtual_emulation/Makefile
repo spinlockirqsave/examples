@@ -11,7 +11,7 @@ all: $(SOURCES) $(TARGET)
 $(TARGET): $(OBJECTS) 
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
-.ccc.o:
+.cc.o:
 	$(CC) $(CFLAGS) $(INCLUDES) $< -o $@
 
 clean:
