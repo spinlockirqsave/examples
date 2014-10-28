@@ -1,5 +1,5 @@
 CC		= g++
-CFLAGS		= -c -g -Wall -D_GNU_SOURCE
+CFLAGS		= -g -c -Wall -D_GNU_SOURCE
 LDFLAGS		= -g
 SOURCES		= main.cpp
 INCLUDES	= -I.

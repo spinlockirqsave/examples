@@ -36,8 +36,11 @@ namespace {
     void collide( Object& obj1, Object &obj2)
     {
         hit_f_ptr phf = lookup( typeid(obj1).name(), typeid(obj2).name());
-        if( phf == 0)
+        if( phf == 0) {
             std::cout << "oh, dear";
+            return;
+        }
+
         phf( obj1, obj2);
     }
 }
