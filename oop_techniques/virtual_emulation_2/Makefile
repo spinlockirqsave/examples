@@ -15,4 +15,4 @@ $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) $(INCLUDES) $< -o $@
 
 clean:
-	rm -rf -i $(OBJECTS) $(TARGET)
+	rm -rf -i $(OBJECTS) $(TARGET) # -i like "ask me before deletion!"
