@@ -14,6 +14,7 @@ namespace {
     void ab( Object &obj1, Object &obj2);
     void ba( Object &obj1, Object &obj2);
     void oo( Object &obj1, Object &obj2);
+    void aa( Object &obj1, Object &obj2);
 
     typedef void ( *hit_f_ptr)( Object& obj1, Object& obj2);
     typedef std::map< std::pair< const std::type_info*, const std::type_info*>, hit_f_ptr> HitMap;
@@ -24,6 +25,7 @@ namespace {
         ( *phm)[ std::make_pair( &typeid(A), &typeid(B))] = &ab;
         ( *phm)[ std::make_pair( &typeid(B), &typeid(A))] = &ba;
         ( *phm)[ std::make_pair( &typeid(Object), &typeid(Object))] = &oo;
+        ( *phm)[ std::make_pair( &typeid(A), &typeid(A))] = &aa;
         
         return phm;
     }
@@ -63,6 +65,11 @@ namespace {
     void oo( Object &obj1, Object &obj2)
     {
         std::cout << "oo:" << typeid(obj1).name() << "," << typeid( obj2).name() << std::endl;
+    }
+
+    void aa( Object &obj1, Object &obj2)
+    {
+        std::cout << "aa:" << typeid(obj1).name() << "," << typeid( obj2).name() << std::endl;
     }
 }
 
