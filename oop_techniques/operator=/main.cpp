@@ -62,27 +62,36 @@ public:
 };
 
 /*--------------improvement2-----------------------------*/
-class Animal3 {
-public:                 // this should be private or protected to make
-                        // cross platform Chicken-to-Liazrd assignment disabled
-                        // but then also *apl3 = *apl3 wouldn't compile
+class AnimalAbstractBase3 {
+protected:              // this should be private or protected to make
+                        // cross platform Chicken-to-Lizard assignment disabled
+                        // while still valid to call from derived classes
+                        // -- but then also *apl3 = *apl3 wouldn't compile...
+                        // What Scott Myers suggests is to extract Abstract Base class, AnimalAbstractBase
+                        // and derive Animal, Lizard & Chicken concrete classes from it
+                        // that is fine but still can't make valid assignment *apl3 = *apl3;... ;(
+    virtual AnimalAbstractBase3& operator= ( const AnimalAbstractBase3& o) { std::cout << "AnimalAbstractBase3:operator=\n"; return *this; }
+    virtual ~AnimalAbstractBase3() = 0;
+};
+
+AnimalAbstractBase3::~AnimalAbstractBase3(){}
+
+class Animal3 : public AnimalAbstractBase3 {
+public:
     virtual Animal3& operator= ( const Animal3& o) { std::cout << "Animal3::operator=\n"; return *this; }
 };
 
-class Lizard3 : public Animal3 {
+class Lizard3 : public AnimalAbstractBase3 {
 public:
-    virtual Lizard3& operator= ( const Animal3& o) { std::cout << "Lizard3Animal3::operator=\n"; return *this; }
     Lizard3& operator= ( const Lizard3& o) {
         std::cout << "Lizard3::operator=\n";
         return *this;
     }
 };
 
-class Chicken3 : public Animal3 {
+class Chicken3 : public AnimalAbstractBase3 {
 public:
-    virtual Chicken3& operator= ( const Animal3& o) { std::cout << "Chicken3Animal3::operator=\n"; return *this; }
     Chicken3& operator= ( const Chicken3& o) {
-        Animal3::operator=( o);
         std::cout << "Chicken3::operator=\n";
         return *this;
     }
@@ -124,15 +133,15 @@ int main(int argc, char** argv) {
     Lizard3 l3;
     Chicken3 c3;
 
-    Animal3 *apl3 = &l3;
-    Animal3 *apc3 = &c3;
+    AnimalAbstractBase3 *apl3 = &l3;
+    AnimalAbstractBase3 *apc3 = &c3;
 
-    *apl3 = *apc3; // it compiles, virtual Lizard3& operator= ( const Animal3& o)       virtual call
+    //*apl3 = *apc3; // error: ‘virtual AnimalAbstractBase3& AnimalAbstractBase3::operator=(const AnimalAbstractBase3&)’ is protected
     
-    *apl3 = *apl3; // it compiles, virtual Lizard3& operator= ( const Animal3& o)       virtual call
+    //*apl3 = *apl3; // error: ‘virtual AnimalAbstractBase3& AnimalAbstractBase3::operator=(const AnimalAbstractBase3&)’ is protected
     l3 = l3;       // Lizard3& operator= ( const Lizard3& o)                            static call  
     
-    *apc3 = *apl3; // virtual Chicken3& operator= ( const Animal3& o)                   virtual call
+    //*apc3 = *apl3; // error: ‘virtual AnimalAbstractBase3& AnimalAbstractBase3::operator=(const AnimalAbstractBase3&)’ is protected
 
     c3 = c3;       // Chicken3& operator= ( const Chicken3& o)                          static call
 
