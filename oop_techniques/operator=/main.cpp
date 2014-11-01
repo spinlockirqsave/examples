@@ -63,7 +63,9 @@ public:
 
 /*--------------improvement2-----------------------------*/
 class Animal3 {
-protected:            // now cross platform Chicken-to-Liazrd assignment is disabled!
+public:                 // this should be private or protected to make
+                        // cross platform Chicken-to-Liazrd assignment disabled
+                        // but then also *apl3 = *apl3 wouldn't compile
     virtual Animal3& operator= ( const Animal3& o) { std::cout << "Animal3::operator=\n"; return *this; }
 };
 
@@ -125,11 +127,12 @@ int main(int argc, char** argv) {
     Animal3 *apl3 = &l3;
     Animal3 *apc3 = &c3;
 
-    //*apl3 = *apc3; // won't compile, error: ‘virtual Animal3& Animal3::operator=(const Animal3&)’ is protected
-
-    l3 = l3;       // Lizard3& operator= ( const Lizard3& o)                            static call       
+    *apl3 = *apc3; // it compiles, virtual Lizard3& operator= ( const Animal3& o)       virtual call
     
-    //*apc3 = *apl3; // won't compile, error: ‘virtual Animal3& Animal3::operator=(const Animal3&)’ is protected
+    *apl3 = *apl3; // it compiles, virtual Lizard3& operator= ( const Animal3& o)       virtual call
+    l3 = l3;       // Lizard3& operator= ( const Lizard3& o)                            static call  
+    
+    *apc3 = *apl3; // virtual Chicken3& operator= ( const Animal3& o)                   virtual call
 
     c3 = c3;       // Chicken3& operator= ( const Chicken3& o)                          static call
 
