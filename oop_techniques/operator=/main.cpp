@@ -118,6 +118,21 @@ int main(int argc, char** argv) {
     *apc2 = *apl2; // virtual Chicken2& operator= ( const Animal2& o)                   virtual call
     c2 = c2;       // Chicken2& operator= ( const Chicken2& o)                          static call
 
+    /*--------------improvement2-----------------------------*/
+    Lizard3 l3;
+    Chicken3 c3;
+
+    Animal3 *apl3 = &l3;
+    Animal3 *apc3 = &c3;
+
+    //*apl3 = *apc3; // won't compile, error: ‘virtual Animal3& Animal3::operator=(const Animal3&)’ is protected
+
+    l3 = l3;       // Lizard3& operator= ( const Lizard3& o)                            static call       
+    
+    //*apc3 = *apl3; // won't compile, error: ‘virtual Animal3& Animal3::operator=(const Animal3&)’ is protected
+
+    c3 = c3;       // Chicken3& operator= ( const Chicken3& o)                          static call
+
     return 0;
 }
 
