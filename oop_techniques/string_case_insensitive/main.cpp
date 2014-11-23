@@ -30,11 +30,25 @@ struct ci_char_traits : public std::char_traits<char>
         }
         return ( n >= 0? toupper( *c1) - toupper( *c2) : 0);
     }
+
+    /* Returns one-past-the-end pointer if not found */
+    static const char* find( const char* s, size_t n, const char& a)
+    {
+        while ( n-- > 0 && toupper( *s) != a)
+            ++s;
+        return n >= 0? s : 0;
+    }
 };
 /*
  * 
  */
 int main( int argc, char** argv) {
+
+    typedef std::basic_string< char, ci_char_traits> ci_string;
+    
+    ci_string a = "aaa";
+    ci_string   b = "aAa";
+    if ( a == b) std::cout << "equal\n";
 
     return 0;
 }
