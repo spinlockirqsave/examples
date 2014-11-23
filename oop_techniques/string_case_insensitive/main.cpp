@@ -1,6 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: peterg
+ * Description: Exceptional C++, Item 2
  *
  * Created on November 22, 2014, 11:09 PM
  */
