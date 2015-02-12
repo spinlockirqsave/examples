@@ -1,6 +1,6 @@
 /* 
  * File:   lru_cache_using_std.h
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  * 2010-2012 by Tim Day
  * http://timday.bitbucket.org/lru.html
  *

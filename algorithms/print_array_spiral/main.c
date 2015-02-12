@@ -1,6 +1,6 @@
 /* 
  * File:   main.c
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  *
  * Created on June 26, 2014, 1:11 AM
  * http://stackoverflow.com/questions/726756/print-two-dimensional-array-in-spiral-order

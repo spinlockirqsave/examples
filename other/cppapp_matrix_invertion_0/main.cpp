@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: http://hullooo.blogspot.com/2011/02/matrix-inversion-by-gauss-jordan.html
- * Modifications: piter cf16 eu
+ * Modifications: peter cf16 eu
  *
  * Created on November 24, 2013, 2:21 AM
  */

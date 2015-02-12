@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: piter  cf16.eu
+ * Author: peter  cf16.eu
  *
  * Created on July 24, 2013, 1:21 AM
  * 
@@ -119,7 +119,7 @@ void TCPdaytimed(int fd){
 int main(int argc, char** argv) {
     
     FILE* fp, *ferr;
-    ferr = freopen("/home/piter/log/log_cppapp_socket4_daytime.txt", "a", stderr);
+    ferr = freopen("/home/peter/log/log_cppapp_socket4_daytime.txt", "a", stderr);
     
     struct sockaddr_in theirAddr;
     const char *service = "daytime";

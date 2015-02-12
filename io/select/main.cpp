@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  * see: man select(2)
  *
  * Created on February 14, 2014, 12:09 PM

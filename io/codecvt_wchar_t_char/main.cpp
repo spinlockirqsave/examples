@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  *
  * Created on March 27, 2014, 10:04 PM
  */
@@ -44,9 +44,9 @@ int main()
 {
     std::locale ulocale( std::locale(), new codecvt_to_upper);
  
-    std::wstring piter = L"piter";
+    std::wstring peter = L"peter";
     std::wofstream ws( "out.txt");
-    ws << piter;
+    ws << peter;
     ws.close();
     std::wifstream in( "out.txt");
     in.imbue( ulocale);

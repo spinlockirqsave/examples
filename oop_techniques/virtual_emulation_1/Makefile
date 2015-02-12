@@ -1,6 +1,6 @@
 CC		= g++
 CFLAGS		= -c -g -Wall -D_GNU_SOURCE
-LDFLAGS		= #-lpcap
+LDFLAGS		= -g
 SOURCES		= main.cc
 INCLUDES	= -I.
 OBJECTS		= $(SOURCES:.cc=.o)

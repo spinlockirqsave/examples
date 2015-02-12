@@ -1,6 +1,6 @@
 /* 
  * File:   Pool_alloc.h
- * Author: piter cf16.eu
+ * Author: peter cf16.eu
  *
  * Created on January 26, 2014, 3:34 AM
  */

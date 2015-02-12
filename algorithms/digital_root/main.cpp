@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  *
  * Created on March 9, 2014, 8:05 PM
  * http://stackoverflow.com/questions/22286604/find-digital-roots-of-a-number/22286842#22286842

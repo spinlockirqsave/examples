@@ -1,8 +1,9 @@
 /* 
  * File:   main.cpp
- * Author: piter
+ * Author: peter
  *
  * Created on June 9, 2014, 8:55 PM
+ * http://stackoverflow.com/questions/24126368/c-not-in-order-combination-of-array-elements/24127231#24127231
  */
 
 #include <iostream>

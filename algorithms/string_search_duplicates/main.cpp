@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  *
  * Created on April 17, 2014, 12:45 PM
  */
@@ -51,7 +51,7 @@ int findDuplicates( std::string& in, std::map<std::string, int>& m) {
  */
 int main(int argc, char** argv) {
 
-    std::ifstream ifs( "/home/piter/Downloads/Sheetal05Singular.pdf");
+    std::ifstream ifs( "/home/peter/Downloads/Sheetal05Singular.pdf");
     std::string in( ( std::istreambuf_iterator<char>( ifs)),
                       std::istreambuf_iterator<char>());
 

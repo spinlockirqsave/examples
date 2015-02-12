@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  *
  * Created on May 18, 2014, 1:32 PM
  * 
@@ -183,9 +183,9 @@ double AMD_FX_4100_tempInfo[ TEMP_IDX_MAX];
 int get_cpu_temperature( double* t)
 {
     FILE *f;
-    const char* n[] = {"/sys/class/hwmon/hwmon2/device/temp1_input",
-                       "/sys/class/hwmon/hwmon2/device/temp2_input",
-                       "/sys/class/hwmon/hwmon2/device/temp3_input"};
+    const char* n[] = {"/sys/class/hwmon/hwmon0/device/temp1_input",
+                       "/sys/class/hwmon/hwmon0/device/temp2_input",
+                       "/sys/class/hwmon/hwmon0/device/temp3_input"};
 
     for ( int i = 0; i < TEMP_IDX_MAX; ++i) {
         if ( ( f = fopen( n[i], "r"))) {
@@ -229,11 +229,12 @@ int main(void) {
     {
         usleep(4000000) ;
         FILE* log;
-        if( ( log = fopen( "/home/piter/log/log_cpu_temperature.txt", "w")) == 0) {
+        if( ( log = fopen( "/home/peter/log/log_cpu_temperature.txt", "w")) == 0) {
             exit(-1);
         }
-        if( get_cpu_temperature( AMD_FX_4100_tempInfo) < 0) {
-            fprintf( log, "error get_cpu_temperature\n");
+        int err = 0;
+        if( ( err = get_cpu_temperature( AMD_FX_4100_tempInfo)) < 0) {
+            fprintf( log, "error get_cpu_temperature:%d\n", err);
             exit( -1);
         }
         if( lines == MAX_LINE_COUNT)

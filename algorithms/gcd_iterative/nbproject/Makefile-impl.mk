@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=cppapp_greatest_common_devisor
+PROJECTNAME=gcd_iterative
 
 # Active Configuration
 DEFAULTCONF=Debug

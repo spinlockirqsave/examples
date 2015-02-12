@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  *
  * Created on April 2, 2014, 11:31 AM
  * program asks user for a number designating a "rejestr"

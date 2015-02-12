@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  *
  * Created on March 1, 2014, 4:41 PM
  * http://stackoverflow.com/questions/22116158/whats-wrong-with-this-stream-buffer/22116751#22116751

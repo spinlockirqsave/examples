@@ -1,9 +1,11 @@
 /* 
  * File:   main.cpp
- * Author: piotruś piter cf16.eu
+ * Author: piotruś peter cf16.eu
  *
  * Created on November 17, 2013, 1:12 PM
  */
+
+#include "Z.h"
 
 #include <cstdlib>
     #include <fstream>
@@ -14,6 +16,8 @@
     #include <algorithm>
     #include <iostream>
 using namespace std;
+
+void printStringA();
 
 class Base {
 public:
@@ -37,6 +41,9 @@ int main(int argc, char** argv) {
     d.va();
     Base* b = new Base();
     b my a();
+    
+    cout << Z::x;
+    printStringA();
     return 0;
 }
 

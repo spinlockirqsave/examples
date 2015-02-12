@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  *
  * Created on March 2, 2014, 8:47 PM
  * http://stackoverflow.com/questions/22132390/zellers-congruence-coding-outputing-wrong-day

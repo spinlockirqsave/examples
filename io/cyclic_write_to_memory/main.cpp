@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  * http://stackoverflow.com/questions/21597562/adapting-c-std-boost-iostreams-to-provide-cyclic-write-to-memory-block
  *
  * Created on February 7, 2014, 3:35 PM

@@ -1,8 +1,9 @@
 /* 
  * File:   main.c
- * Author: piter
+ * Author: peter
  *
  * Using threads to solve producer consumer problem
+ * Interprocess Communication, p.133
  * Tanenbaum A., S., "Modern Operating Systems, 3rd edition"
  * 
  * Created on June 7, 2014, 6:38 PM
@@ -22,10 +23,10 @@ void *producer( void *ptr) {
 
     int i = 1;
 
-    for (; i <= MAX; i++) {
+    for ( ; i <= MAX; i++) {
         
         /* get exclusive access to buffer */
-        pthread_mutex_lock(&the_mutex);
+        pthread_mutex_lock( &the_mutex);
         while ( buffer != 0) pthread_cond_wait( &condp, &the_mutex);
 
         /* put item in buffer */
@@ -47,10 +48,10 @@ void *consumer( void *ptr) {
 
     int i = 1;
 
-    for (; i <= MAX; i++) {
+    for ( ; i <= MAX; i++) {
         
         /* get exclusive access to buffer */
-        pthread_mutex_lock(&the_mutex);
+        pthread_mutex_lock( &the_mutex);
         while ( buffer == 0) pthread_cond_wait( &condc, &the_mutex);
 
         /* take item out of buffer */

@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  * by Prokopi Nikolaev
  * http://geom3d.com/data/documents/Calculation=20of=20Euler=20angles.pdf
  * Created on February 7, 2014, 9:57 AM

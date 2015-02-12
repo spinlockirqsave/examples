@@ -1,0 +1,21 @@
+Part 1:
+
+Consider the set of natural numbers (i.e. 1,2,3,...) a,b,c for which
+
+a^2+b^2=c^2
+
+Find a set of numbers a,b,c which also satisfy the property:
+
+a+b+c=4070
+
+Part 2:
+
+Consider the cipher in which the number x is encrypted to
+
+E(x) = (w * x + v ) % 256
+
+This only works if w is relatively prime to 256, i.e. the only number which divides both w and 256 is 1.
+
+Let {a, b, c} be the answer from part 1. One of {a % 256, b % 256} is equal to w. v is equal to (c % 256).
+
+The ascii value of each byte of the file encrypted.txt is encrypted in this manner. Decrypt it and follow the instructions contained inside.

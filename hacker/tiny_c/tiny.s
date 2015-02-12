@@ -1,6 +1,6 @@
 
 ; tiny.asm
-; author: Piotr Gregor  piter@cf16.eu
+; author: Piotr Gregor  peter@cf16.eu
   BITS 64
   GLOBAL _start
   SECTION .text

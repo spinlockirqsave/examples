@@ -1,6 +1,6 @@
 /* 
  * File:   main.c
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  *
  * Created on May 28, 2014, 7:14 PM
  */
@@ -56,25 +56,25 @@ int main(int argc, char** argv) {
     return (EXIT_SUCCESS);
 }
 /*
-piter@ubuntuamd:/home/piter/include/unix_networking/unpv13e/sctp# ps -ef | grep fork_0
-piter     18097  5557  0 19:47 pts/1    00:00:00 /usr/local/netbeans-7.2.1/ide/bin/nativeexecution/Linux-x86_64/pty /bin/sh -c exec "/piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0"
-piter     18099 18097  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18101 18099  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18102 18099  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18103 18101  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18104 18099  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18105 18101  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18106 18099  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18107 18104  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18108 18101  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18109 18105  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18110 18102  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18111 18102  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18112 18103  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18113 18103  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18114 18112  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18115 18110  0 19:47 pts/11   00:00:00 /piter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
-piter     18121 18010  0 19:47 pts/2    00:00:00 grep --color=auto fork_0
+peter@ubuntuamd:/home/peter/include/unix_networking/unpv13e/sctp# ps -ef | grep fork_0
+peter     18097  5557  0 19:47 pts/1    00:00:00 /usr/local/netbeans-7.2.1/ide/bin/nativeexecution/Linux-x86_64/pty /bin/sh -c exec "/peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0"
+peter     18099 18097  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18101 18099  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18102 18099  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18103 18101  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18104 18099  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18105 18101  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18106 18099  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18107 18104  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18108 18101  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18109 18105  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18110 18102  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18111 18102  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18112 18103  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18113 18103  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18114 18112  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18115 18110  0 19:47 pts/11   00:00:00 /peter/NetBeansProjects/examples/threads/fork_0/dist/Debug/GNU-Linux-x86/fork_0
+peter     18121 18010  0 19:47 pts/2    00:00:00 grep --color=auto fork_0
 */
 
 /*

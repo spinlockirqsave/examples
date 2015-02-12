@@ -1,6 +1,6 @@
 /* 
  * File:   logger.h
- * Author: piter cf16.eu
+ * Author: peter cf16.eu
  *
  * Created on September 26, 2013, 7:01 PM
  */

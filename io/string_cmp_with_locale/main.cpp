@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: piter cf16 eu
+ * Author: peter cf16 eu
  *
  * Created on March 20, 2014, 03:57 AM
  */
@@ -38,8 +38,8 @@ void f( const std::string& s1, const std::string& s2, const char* n) {
 
 int main(int argc, char** argv) {
 
-    std::string s1 = "piter1";
-    std::string  s2 = "piter2";
+    std::string s1 = "peter1";
+    std::string  s2 = "peter2";
     f( s1, s2, "POSIX");
     return 0;
 }
