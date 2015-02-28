@@ -1,3 +1,6 @@
+// if mmap fails, run first as root:
+// echo 0 > /proc/sys/vm/mmap_min_addr
+
 #include <stdio.h>
 #include <sys/mman.h>
 
