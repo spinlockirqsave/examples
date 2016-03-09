@@ -33,9 +33,8 @@ usage(const char *name)
 		return;
 
     std::cerr << "\nusage:\t " << name << " <input> <output>\n";
-    std::cerr << "\nExample:\n" <<
-        "	executable input.csv output.csv\n" <<
-		"	This will read file input.csv and write result to output.csv.\n\n";
+    std::cerr << "\nExample:\n" << "	executable input.csv output.csv\n" <<
+        "	This will read file input.csv and write result to output.csv.\n\n";
 }
 
 /* @brief   Transaction representation.
@@ -43,6 +42,7 @@ usage(const char *name)
 class Trade
 {
     public:
+
         friend std::istream&
         operator>>(std::istream& is, Trade& t)
         {
@@ -76,21 +76,25 @@ fail:
         {
             return state_;
         }
+
         uint32_t
         ts(void) const
         {
             return ts_;
         }
+
         uint32_t
         price(void) const
         {
             return price_;
         }
+
         std::string
         ticker(void) const
         {
             return ticker_;
         }
+
         uint32_t
         qty(void) const
         {
@@ -98,6 +102,7 @@ fail:
         }
 
     private:
+
         bool                    state_;  /* true if Trade read successfully,
                                             false - in bad state */
         uint32_t                ts_;
