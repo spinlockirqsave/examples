@@ -23,6 +23,8 @@
  * while processing input file */ 
 //#define PRINT_TO_CERR
 
+/* this is single threaded program,
+ * don't worry about this variable */
 unsigned long long int entry;
 
 
@@ -33,8 +35,9 @@ usage(const char *name)
 		return;
 
     std::cerr << "\nusage:\t " << name << " <input> <output>\n";
-    std::cerr << "\nExample:\n" << "	executable input.csv output.csv\n" <<
-        "	This will read file input.csv and write result to output.csv.\n\n";
+    std::cerr << "\nExample:\n" << "	executable input.csv output.csv\n"
+                                << "	This will read file input.csv and "
+                                << "write result to output.csv.\n\n";
 }
 
 /* @brief   Transaction representation.
