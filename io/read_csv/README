@@ -1,0 +1,52 @@
+/* 
+ * @file    README
+ * @brief   Description of this example. 
+ * @author: Piotr Gregor < piotrek.gregor at gmail.com >
+ * @date    9 Mar 2016
+ */
+
+
+
+
+read_csv
+--------
+
+Computes simple statistics for trades
+from input csv file.
+
+
+
+Build and cleanup
+-----
+
+There are two targets: release and debug.
+Debug target will print content of std::map.
+Before building you may wish to uncomment
+PRINT_TO_CERR definition to enable error
+logging to std::cerr.
+
+RELEASE:
+make (or make release)
+
+DEBUG:
+make debug
+
+CLEAN:
+make clean
+
+
+
+Usage
+-----
+
+Program takes two arguments.
+The name of the input file (containing trades)
+is given as the first argument, the name
+of the output file is given as the second argument.
+
+Synopsis:
+            executable <input> <output>
+
+            Example:
+                    executable input.csv output.csv
+                    This will read file input.csv and write result to output.csv.
