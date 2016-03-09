@@ -194,7 +194,9 @@ main(int argc, char* argv[])
     if (!in)
     {
         std::cerr << "Error. Can't open file [" 
-            << argv[1] << "] for reading." << std::endl;
+            << argv[1] << "] for reading.\nPlease make"
+            << " sure it exists and you have appropriate"
+            << " permisions.\n";
         return -2;
     }
 
