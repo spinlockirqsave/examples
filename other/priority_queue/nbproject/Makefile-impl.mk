@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=priority_queue
+PROJECTNAME=priority_qe
 
 # Active Configuration
 DEFAULTCONF=Debug

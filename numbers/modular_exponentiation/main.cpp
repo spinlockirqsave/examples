@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: peter cf16 eu
+ * Author: peter 
  * http://stackoverflow.com/questions/21677292/remainder-when-dividing-large-number/21679387#21679387
  * Created on February 11, 2014, 12:07 PM
  */
@@ -36,7 +36,7 @@ long modexp( long a, long pow, long p) {
 }
 
 /**
- * by cf16 
+ * by  
  * @param base
  * @param exponent
  * @param modulus

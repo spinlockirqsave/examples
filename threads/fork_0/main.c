@@ -1,6 +1,6 @@
 /* 
  * File:   main.c
- * Author: peter cf16 eu
+ * Author: peter 
  *
  * Created on May 28, 2014, 7:14 PM
  */

@@ -1,6 +1,6 @@
 /* 
  * File:   test.c
- * Author: Piotr Gregor  peter cf16.eu
+ * Author: Piotr Gregor  peter 
  *
  * Created on August 27, 2013, 3:45 AM
  */

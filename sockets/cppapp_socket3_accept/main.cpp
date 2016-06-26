@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: peter cf16 eu
+ * Author: peter 
  *
  * Created on July 21, 2013, 12:28 PM
  */
@@ -21,7 +21,7 @@
  
 /* the port users will be connecting to */
 #define MYPORT 3440
-/* how many pending connections queue will hold */
+/* how many pending connections qe will hold */
 #define BACKLOG 10
 
 int main() {

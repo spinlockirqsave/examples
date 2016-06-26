@@ -1,12 +1,13 @@
 /* 
- * @file    main.cpp
- * @brief   Computes simple statistics for trades.
- * @details Name of the input file (containing trades)
- *          is given as the first argument,
- *          name of the output file is given as
- *          the second argument.
- * @author: Piotr Gregor < piotrek.gregor at gmail.com >
- * @date    9 Mar 2016
+ * @file        main.cpp
+ * @brief       Computes simple statistics for trades.
+ * @details     Name of the input file (containing trades)
+ *              is given as the first argument,
+ *              name of the output file is given as
+ *              the second argument.
+ * @author:     Piotr Gregor < piotrek.gregor at gmail.com >
+ * @date        9 Mar 2016
+ * copyright    LGPLv2.1
  */
 
 #include <iostream>

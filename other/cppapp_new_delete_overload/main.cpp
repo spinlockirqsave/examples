@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: peter cf16.eu
+ * Author: peter 
  *
  * Created on August 27, 2013, 12:15 AM
  */

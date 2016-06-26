@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=cppapp_priority_queue
+PROJECTNAME=cppapp_priority_qe
 
 # Active Configuration
 DEFAULTCONF=Debug

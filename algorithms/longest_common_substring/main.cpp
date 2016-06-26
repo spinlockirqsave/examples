@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: peter cf16 eu
+ * Author: peter 
  *
  * Created on March 9, 2014, 12:53 AM
  * http://stackoverflow.com/questions/22276500/overlapping-of-keyword-and-comparison-word/22276831#22276831

@@ -1,13 +1,13 @@
 /* 
  * File:   main.cpp
- * Author: peter cf16 eu
+ * Author: peter 
  *
  * Created on April 23, 2014, 11:40 AM
  */
 
 #include <vector>
 #include <list>
-#include <queue>
+#include <qe>
 #include <iostream>
 #include <stdexcept>
 #include <algorithm>

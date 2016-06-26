@@ -1,6 +1,6 @@
 /* 
  * File:   increment_gpu.cpp
- * Author: peter cf16 eu
+ * Author: peter 
  *
  * Created on March 26, 2013, 2:58 PM
  */

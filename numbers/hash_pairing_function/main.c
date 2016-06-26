@@ -1,6 +1,6 @@
 /* 
  * File:   main.c
- * Author: peter cf16 eu
+ * Author: peter 
  *
  * Created on May 29, 2014, 3:24 PM
  * http://stackoverflow.com/questions/23933808/what-is-a-fast-data-structure-to-implement-a-pair-storage-as-specified-here/23933876#23933876

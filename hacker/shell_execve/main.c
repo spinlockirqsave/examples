@@ -1,6 +1,6 @@
 #include <unistd.h>
 /*
- * author: Piotr Gregor  peter@cf16.eu
+ * author: Piotr Gregor  peter@
  */
 int main() {
 

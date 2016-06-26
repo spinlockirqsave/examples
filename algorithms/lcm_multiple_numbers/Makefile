@@ -1,10 +1,10 @@
 include Make.defines
 
-PROGS =	cf16_lcm
+PROGS =	_lcm
 
 all:	${PROGS}
 
-cf16_lcm:	main.o
+_lcm:	main.o
 		${CC} ${CFLAGS} -o $@ main.o ${LIBS}
 
 clean:

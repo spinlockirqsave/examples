@@ -20,9 +20,9 @@ struct Comparator
                 return lfs->totalCost < rhs->totalCost;
             }
         };
-#include <queue>
+#include <qe>
 #include <vector>
-std::priority_queue<Cell*, std::vector<Cell*>, Comparator> path;
+std::priority_qe<Cell*, std::vector<Cell*>, Comparator> path;
 
 void function(Cell* cell)
 {

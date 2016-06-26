@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: Piotr Gregor  peter@cf16.eu
+ * Author: Piotr Gregor  peter@
  *
  * Created on August 25, 2013, 4:54 PM
  */
@@ -66,7 +66,7 @@
  *990420 {1.38} Tuan Hoang              removed a useless assignment from igmp_do_one()
  *20010404 {1.39} Arnaldo Carvalho de Melo - use setlocale
  *20081201 {1.42} Brian Micek           added -L|--udplite options for RFC 3828 
- *20020722 {1.51} Thomas Preusser       added SCTP over IPv4 support
+ *20020722 {1.51} Thomas Psser       added SCTP over IPv4 support
  *
  *              This program is free software; you can redistribute it
  *              and/or  modify it under  the terms of  the GNU General
@@ -447,8 +447,8 @@ static void prg_cache_load(void)
 	return;
     if (prg_cache_loaded == 1) {
     fail:
-	fprintf(stderr,_("(No info could be read for \"-p\": geteuid()=%d but you should be root.)\n"),
-		geteuid());
+	fprintf(stderr,_("(No info could be read for \"-p\": geid()=%d but you should be root.)\n"),
+		geid());
     }
     else
 	fprintf(stderr, _("(Not all processes could be identified, non-owned process info\n"

@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: peter cf16 eu
+ * Author: peter 
  *
  * Created on April 29, 2014, 3:00 PM
  * http://stackoverflow.com/questions/784417/reversing-a-string-in-c

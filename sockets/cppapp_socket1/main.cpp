@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: Piotr Gregor  peter@cf16.eu
+ * Author: Piotr Gregor  peter@
  *
  * Created on July 21, 2013, 1:17 AM
  */
@@ -28,7 +28,7 @@ int main() {
     //    and bind() fails, claiming "Address already in use".
     //    This means a socket that was connected is still hanging around in the kernel,
     //    and it’s hogging the port. You can either wait for it to clear (a minute or so),
-    //    or add code to your program allowing it to reuse the port, like this:
+    //    or add code to your program allowing it to se the port, like this:
     int yes = 1;
     /* "Address already in use" error message */
     if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof (int)) == -1) {

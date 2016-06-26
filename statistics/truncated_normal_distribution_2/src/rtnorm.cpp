@@ -1,4 +1,4 @@
-//  Pseudorandom numbers from a truncated Gaussian distribution.
+//  Pdorandom numbers from a truncated Gaussian distribution.
 //
 //  This implements an extension of Chopin's algorithm detailed in
 //  N. Chopin, "Fast simulation of truncated Gaussian distributions",
@@ -37,7 +37,7 @@
 int N = 4001;   // Index of the right tail
 
 //------------------------------------------------------------
-// Pseudorandom numbers from a truncated Gaussian distribution
+// Pdorandom numbers from a truncated Gaussian distribution
 // The Gaussian has parameters mu (default 0) and sigma (default 1)
 // and is truncated on the interval [a,b].
 // Returns the random variable x and its probability p(x).

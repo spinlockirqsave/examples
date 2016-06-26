@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: peter cf16 eu
+ * Author: peter 
  *
  * Created on April 18, 2013, 10:04 PM
  */
@@ -34,7 +34,7 @@ int sendmail(const char *to, const char *from, const char *subject, const char *
  */
 int main(int argc, char** argv) {
 
-    int res=sendmail("cf16rocket@gmail.com","ubuntu","new_subject","how are you Piter?");
+    int res=sendmail("rocket@gmail.com","ubuntu","new_subject","how are you Piter?");
     return 0;
 }
 

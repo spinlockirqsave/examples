@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: peter cf16 eu
+ * Author: peter 
  * http://stackoverflow.com/questions/14099542/c-convert-date-formats
  *
  * Created on March 25, 2014, 2:35 PM

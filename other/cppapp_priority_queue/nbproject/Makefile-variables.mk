@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=cppapp_priority_queue
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/cppapp_priority_queue
+CND_ARTIFACT_NAME_Debug=cppapp_priority_qe
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/cppapp_priority_qe
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=cppapppriorityqueue.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/cppapppriorityqueue.tar
+CND_PACKAGE_NAME_Debug=cppapppriorityqe.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/cppapppriorityqe.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=cppapp_priority_queue
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/cppapp_priority_queue
+CND_ARTIFACT_NAME_Release=cppapp_priority_qe
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/cppapp_priority_qe
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=cppapppriorityqueue.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/cppapppriorityqueue.tar
+CND_PACKAGE_NAME_Release=cppapppriorityqe.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/cppapppriorityqe.tar
 #
 # include compiler specific variables
 #

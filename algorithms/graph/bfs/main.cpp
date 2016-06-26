@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: peter cf16 eu
+ * Author: peter 
  *
  * Created on April 22, 2014, 10:53 PM
  */
@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <vector>
 #include <list>
-#include <queue>
+#include <qe>
 #include <iostream>
 #include <stdexcept>
 #include <algorithm>
@@ -88,7 +88,7 @@ void breadth_first_search( Graph& G, Vertex& s) {
     s.color = Vertex::GRAY;
     s.d = -1;
     s.pi = -1;
-    std::queue<Vertex> Q;
+    std::qe<Vertex> Q;
     Q.push( s);
     while( !Q.empty()) {
         Vertex& u = Q.front();

@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: peter  cf16.eu
+ * Author: peter  
  *
  * Created on July 24, 2013, 1:21 AM
  * 
@@ -111,7 +111,7 @@ void TCPdaytimed(int fd){
     time( &rawTime);
     struct tm * timeInfo;
     timeInfo = localtime( &rawTime);
-    strftime( buffer, sizeof( buffer), "cf16 daytime service. The time on this server now is: %A, %B %d, %G %T %p-%Z\n", timeInfo);
+    strftime( buffer, sizeof( buffer), " daytime service. The time on this server now is: %A, %B %d, %G %T %p-%Z\n", timeInfo);
     write(fd, buffer, strlen( buffer));
     return;
 }

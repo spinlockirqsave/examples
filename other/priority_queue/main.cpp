@@ -1,12 +1,12 @@
 /* 
  * File:   main.cpp
- * Author: peter cf16 eu
+ * Author: peter 
  *
  * Created on January 30, 2014, 1:05 PM
  */
 
 #include <iostream>
-#include <queue>
+#include <qe>
 #include <vector>
 #include <algorithm> 
 
@@ -52,17 +52,17 @@ template<typename T, typename Param>
 class taskQ
 {
 public:
-    std::priority_queue<Task< T,Param >, std::vector<Task< T,Param > >,
-                                              TaskCompare> queue;
+    std::priority_qe<Task< T,Param >, std::vector<Task< T,Param > >,
+                                              TaskCompare> qe;
 
     void addTask(T& t, void (T::*f)(Param), Param p_, int pri) {
-    queue.push(Task< T,Param >( t, f, p_, pri));
+    qe.push(Task< T,Param >( t, f, p_, pri));
      }
 
      void executeTask() {   
-         while( !queue.empty()) {
-             queue.top()();
-             queue.pop();
+         while( !qe.empty()) {
+             qe.top()();
+             qe.pop();
             }
 
      }

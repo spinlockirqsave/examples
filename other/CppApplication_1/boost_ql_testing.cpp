@@ -40,7 +40,7 @@ to calcSize() are also stored on the stack. If the calcSize() function calls to 
 more space would be allocated at the heap again. When the calcSize() function returns the value, 
 the space for its local variables at heap is then deallocated and heap clears to be available 
 for other functions.
-The memory allocated in the heap area is used and reused during program execution.
+The memory allocated in the heap area is used and sed during program execution.
 It should be noted that memory allocated in heap will contain garbage values left over from previous usage.
 
 Memory space for objects is always allocated in heap. Objects are placed on the heap.

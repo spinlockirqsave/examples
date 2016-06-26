@@ -1,8 +1,13 @@
-/* 
- * @file    README
- * @brief   Description of this example. 
- * @author: Piotr Gregor < piotrek.gregor at gmail.com >
- * @date    9 Mar 2016
+/*
+ * @details     Name of the input file (containing trades)
+ *              is given as the first argument,
+ *              name of the output file is given as
+ *              the second argument.
+ * @file        README
+ * @brief       Description of this example. 
+ * @author:     Piotr Gregor < piotrek.gregor at gmail.com >
+ * @date        9 Mar 2016
+ * copyright    LGPLv2.1
  */
 
 

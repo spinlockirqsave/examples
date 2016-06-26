@@ -1,7 +1,7 @@
 /*! 
  *  \brief     Pretty nice class.
  *  \details   Tracking vtable.
- *  \author    peter cf16 eu
+ *  \author    peter 
  *  \date      2014 03 18
  */
 
