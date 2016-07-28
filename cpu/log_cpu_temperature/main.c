@@ -177,8 +177,8 @@ int get_type_scaling(sensors_subfeature_type type)
 	}
 }
 
-const int TEMP_IDX_MAX = 3;
-double AMD_FX_4100_tempInfo[ TEMP_IDX_MAX];
+#define TEMP_IDX_MAX 3
+double AMD_FX_4100_tempInfo[TEMP_IDX_MAX];
 
 int get_cpu_temperature( double* t)
 {
@@ -187,7 +187,8 @@ int get_cpu_temperature( double* t)
                        "/sys/class/hwmon/hwmon0/device/temp2_input",
                        "/sys/class/hwmon/hwmon0/device/temp3_input"};
 
-    for ( int i = 0; i < TEMP_IDX_MAX; ++i) {
+	int i = 0;
+    for (; i < TEMP_IDX_MAX; ++i) {
         if ( ( f = fopen( n[i], "r"))) {
             int res, err = 0;
 
@@ -223,22 +224,23 @@ int main(void) {
     
     int lines = 0;
     struct Line* head = 0;
-    struct Line* tail = 0;
+    struct Line* tail = 0, *pl;
     
     while(1)
     {
         usleep(4000000) ;
         FILE* log;
-        if( ( log = fopen( "/home/peter/log/log_cpu_temperature.txt", "w")) == 0) {
+        if((log = fopen( "/home/peter/log/log_cpu_temperature.txt", "w+")) == 0) {
+			fprintf(stderr, "Can't open log!\n");
             exit(-1);
         }
         int err = 0;
-        if( ( err = get_cpu_temperature( AMD_FX_4100_tempInfo)) < 0) {
-            fprintf( log, "error get_cpu_temperature:%d\n", err);
+        if((err = get_cpu_temperature( AMD_FX_4100_tempInfo)) < 0) {
+            fprintf(stderr, "error get_cpu_temperature:%d\n", err);
+            fprintf(log, "error get_cpu_temperature:%d\n", err);
             exit( -1);
         }
-        if( lines == MAX_LINE_COUNT)
-        {
+        if( lines == MAX_LINE_COUNT) {
             struct Line* new_head = head->pred;
             free( head);
             head = new_head;
@@ -246,7 +248,7 @@ int main(void) {
             --lines;
         }
         
-        struct Line* new_line = (Line*)malloc( sizeof(Line));
+        struct Line* new_line = (struct Line*)malloc(sizeof(struct Line));
         struct tm* gmt;
         time_t now = time(0);
         gmt = gmtime( &now);
@@ -262,10 +264,10 @@ int main(void) {
         ++lines;
         if( lines == 1) head = new_line;
         
-        for( struct Line* pl = head; ; pl = pl->pred) {
-            if( fprintf( log, "%s\n", pl->line) < 0)
+		pl = head;
+        for(; pl; pl = pl->pred) {
+            if(fprintf( log, "%s\n", pl->line) < 0)
                 exit(-1);
-            if( pl->pred == 0) break;
         }
         fclose( log);
     }
